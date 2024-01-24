@@ -2,7 +2,7 @@
 
 title="Select Windows Server to put to sleep"
 
-SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
+export SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 source "$SCRIPT_DIR/inc_select_server.sh"
 
 echo "Will force sleep this Windows Machine via OpenSSH ..."; 

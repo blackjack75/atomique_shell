@@ -16,9 +16,6 @@ then
     exit 1
 fi
 
-SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-export SCRIPT_DIR
-
 # title variable must be defined by parent script
 if [ -z "$title" ]; then
     # If not defined, set it to a default value
@@ -41,12 +38,12 @@ selected_server=$(
 
   cat $SERVERS_PATH/*.txt | \
 	  fzf --delimiter='|'  \
-	  --preview='echo {} | $SCRIPT_DIR/ssh_preview.sh ' \
+	  --preview='echo {} | $SCRIPT_DIR/inc_preview.sh ' \
 	  --preview-window=up:6:wrap
 )
 fi
 
-source "$SCRIPT_DIR/ssh_parse_line.sh"
+source "$SCRIPT_DIR/inc_parse_line.sh"
 
 # Print chosen server's name
 clear

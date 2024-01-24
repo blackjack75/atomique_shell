@@ -10,7 +10,7 @@ done
 selected_server=$piped_input
 
 # Define variables
-source "$SCRIPT_DIR/ssh_parse_line.sh"
+source "$SCRIPT_DIR/inc_parse_line.sh"
 
 echo "---------------------------------"
 echo $title

@@ -2,7 +2,7 @@
  
 title="Select Server to copy your ECDSA key to"
 
-SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
+export SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 source "$SCRIPT_DIR/inc_select_server.sh"
 
 echo "Copying local id_ecdsa key  to this server ..."; 
