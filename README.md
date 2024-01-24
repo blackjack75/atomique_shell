@@ -1,4 +1,4 @@
-# WORK IN PROGRESS USE AT YOUR OWN RISK
+oi# WORK IN PROGRESS USE AT YOUR OWN RISK
 
 
 # Installing
@@ -24,8 +24,7 @@ or (for me) as committer with proper ~/.ssh/config:
 
     git clone git@github.com-atomique-shell:blackjack75/atomique_shell.git ~/atomique/code/atomique_shell
  
-    git clone git@github.com-servers:blackjack75/servers_santiago.git ~/atomique/code/data
- 
+    git clone git@github.com-servers:blackjack75/servers_santiago.git ~/atomique/data
 
 ### Add the bin folder to your PATH in .zshrc or .bashrc
 
