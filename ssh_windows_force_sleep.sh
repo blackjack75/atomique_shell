@@ -2,10 +2,8 @@
 
 title="Select Windows Server to put to sleep"
 
-source "$(dirname "${BASH_SOURCE[0]}")/includes/ssh_select_server.sh"
-
-# Connect to the chosen server using its IP address (second field)
-
+SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
+source "$SCRIPT_DIR/inc_select_server.sh"
 
 echo "Will force sleep this Windows Machine via OpenSSH ..."; 
 

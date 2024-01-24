@@ -27,17 +27,19 @@ fi
 
 export title
 
+SERVERS_PATH=~/atomique/data/servers
+
 ## Check if FZF_CMD is equal to fzy
 if [ "$FZF_CMD" == "fzy" ]; then
 selected_server=$(
-  cat $SCRIPT_DIR/../servers/*.txt | \
+  cat $SERVERS_PATH/*.txt | \
 	  fzy -i
 )
 else
 
 selected_server=$(
 
-  cat $SCRIPT_DIR/../servers/*.txt | \
+  cat $SERVERS_PATH/*.txt | \
 	  fzf --delimiter='|'  \
 	  --preview='echo {} | $SCRIPT_DIR/ssh_preview.sh ' \
 	  --preview-window=up:6:wrap

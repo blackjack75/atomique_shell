@@ -2,7 +2,9 @@
 
 title="Select Server to connect to"
 
-source "$(dirname "${BASH_SOURCE[0]}")/includes/ssh_select_server.sh"
+
+SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
+source "$SCRIPT_DIR/inc_select_server.sh"
 
 
 # Rename the window
