@@ -33,4 +33,14 @@ or (for me) as committer with proper ~/.ssh/config:
 
 ### Add this line to your tmux.conf file
 ### so that control-B +H opens list of ssh servers
+
     bind-key h new-window -n "ssh-selector" "$SHELL --login -i -c 'sshc'"
+
+### Install cron model to update this repo hourly
+### (makes sense only for DEV on several machines)
+### same script can be used to update data repo
+
+    cd ~/atomique/code/atomique_shell
+    ./install_cron.sh
+    
+
