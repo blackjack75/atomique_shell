@@ -8,12 +8,15 @@ Multiple .txt files are allowed. See example folders.
 My data folder is a separate git repo. I may share and example repo.
 
 Code could be anywhere but I use (and actually test):
+
     ~/atomique/code/
 
 So to install it as a user you do: 
+
     git clone "https://github.com/blackjack75/atomique_shell" ~/atomique/code/atomique_shell 
 
 for me committer with proper ~/.ssh/config:
+
     git clone git@github.com-atomique-shell:blackjack75/atomique_shell.git ~/atomique/code/atomique_shell 
 
 ### Add the bin folder to your PATH in .zshrc or .bashrc
