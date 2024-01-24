@@ -14,11 +14,11 @@ export selected_menu
 source "$SCRIPT_DIR/inc_parse_line_menu.sh"
 
 echo $SEPLINE
-echo  $title - $menu_title
+echo " $title - $menu_title" 
 echo $SEPLINE
 
-echo "Command: $menu_command"
-echo "Info:    $menu_info"
+echo " Command: $menu_command"
+echo " Info:    $menu_info"
 
 echo $SEPLINE
 

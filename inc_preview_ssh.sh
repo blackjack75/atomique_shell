@@ -14,16 +14,16 @@ export selected_server
 source "$SCRIPT_DIR/inc_parse_line_ssh.sh"
 
 echo $SEPLINE
-echo $title
+echo " $title "
 echo $SEPLINE
 
 clean_name=$(echo "$server_name" | tr -cd '[:alnum:]_.-' | tr -s '_')-ssh
 
 nbwin=$(tmux list-windows | grep -ci "$clean_name")
 
-echo "Name: $server_name Active Windows: $nbwin   " 
-echo "Host: $server_host   User: $server_user   Port: $server_port"
-echo "Keywords: $server_keywords    " 
+echo " Name: $server_name Active Windows: $nbwin   " 
+echo " Host: $server_host  User: $server_user   Port: $server_port"
+echo " Keywords: $server_keywords    " 
 
 
 echo $SEPLINE
