@@ -1,0 +1,25 @@
+                         
+                             |
+        __                 - o -                       
+_____ _/  |_  ____   _____  _|_ ________ __   ____  
+\__  \\   __\/    \ /     \|  |/ ____/  |  \_/ __ \ 
+ / __ \|  | (   O  )  | |  \  < <_|  |  |  /\  ___/ 
+(____  /__|  \____/|__|_|  /__|\__   |____/  \___  >
+     \/                  \/       |__|           \/ 
+
+
+There we are. There's not much to say about this. I am note sure what the plan is but I like to use this in Cool-Retro-Term on a vertical screen for maximum old school feelings. I hope you enjoy it.
+
+You can e-mail me at santiago@lema.org
+
+Or reach me on Mastodon on santiago@masto.lema.org
+
+If you like this you can donate to whoever needs it, hopefully it won't be me anytime soon.
+
+--------------------------------------------------------------
+
+Checkout https://atomique.org for more info
+
+Get the latest version on GitHub:
+
+https://github.com/blackjack75/atomique_shell

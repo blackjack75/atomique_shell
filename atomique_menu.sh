@@ -66,7 +66,7 @@ if [ "$menu_command" = "kill" ]; then
 else
 
 	"$SCRIPT_DIR/$menu_command"
-
+        echo " "
 	echo "-------------------------------------"
 	echo " Command ended. Press any key to go back to atomique menu..."
 	echo "-------------------------------------"
