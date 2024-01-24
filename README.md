@@ -1,6 +1,7 @@
 # WORK IN PROGRESS USE AT YOUR OWN RISK
-# NO NOT USE NOW
 
+
+# Installing
 
 
 Data such as servers must be in ~/atomique/data : 
