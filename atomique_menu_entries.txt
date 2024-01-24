@@ -1,5 +1,6 @@
-SSH       | atomique_ssh_connect.sh | Connect to SSH servers defined in ~/atomique/data/servers/*.txt
-WINSLEEP  | atomique_windows_force_sleep.sh | Connect to a Windows Server running OpenSSH and send command to put it to sleep 
-BOOKMARKS | atomique_menu_bookmarks.sh | TODO store bookmarks here
-ABOUT     | atomique_menu_info.sh | Show info about this crazy little thing
+SSH CONNECT | atomique_ssh_connect.sh | Connect to SSH servers defined in ~/atomique/data/servers/*.txt
+SSH COPY ID | atomique_ssh_copy_id_to_server.sh | Pick a SSH server and copy your public key there
+WINSLEEP    | atomique_windows_force_sleep.sh | Connect to a Windows Server running OpenSSH and send command to put it to sleep 
+BOOKMARKS   | atomique_menu_bookmarks.sh | TODO store bookmarks here
+ABOUT       | atomique_menu_info.sh | Show info about this crazy little thing
 
