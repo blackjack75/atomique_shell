@@ -1,21 +1,25 @@
 # WORK IN PROGRESS USE AT YOUR OWN RISK
 # NO NOT USE NOW
 
-Servers must be in: 
-    ~/atomique/data/servers/
 
-Multiple .txt files are allowed. See example folders.
-My data folder is a separate git repo. I may share and example repo.
 
-Code could be anywhere but I use (and actually test):
+Data such as servers must be in ~/atomique/data : 
 
-    ~/atomique/code/
+    mkdir -p ~/atomique/data/servers/
+    ~/atomique/data/servers/myservers.txt
+
+You can add other .txt files in the same folder.
+
+
+Code repositories go in:
+
+    mkdir -p ~/atomique/code/
 
 So to install it as a user you do: 
 
     git clone "https://github.com/blackjack75/atomique_shell" ~/atomique/code/atomique_shell 
 
-for me committer with proper ~/.ssh/config:
+or (for me) as committer with proper ~/.ssh/config:
 
     git clone git@github.com-atomique-shell:blackjack75/atomique_shell.git ~/atomique/code/atomique_shell 
 
