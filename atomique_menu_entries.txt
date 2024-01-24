@@ -3,4 +3,4 @@ SSH COPY ID | atomique_ssh_copy_id_to_server.sh | Pick a SSH server and copy you
 WINSLEEP    | atomique_windows_force_sleep.sh | Connect to a Windows Server running OpenSSH and send command to put it to sleep 
 BOOKMARKS   | atomique_menu_bookmarks.sh | TODO store bookmarks here
 ABOUT       | atomique_menu_info.sh | Show info about this crazy little thing
-
+EXIT        | kill | Exit this menu cleanly

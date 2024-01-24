@@ -45,13 +45,12 @@ selected_menu=$(
 
   cat "$SCRIPT_DIR/atomique_menu_entries.txt" | \
 	  fzf --delimiter='|'  \
-	  --preview='echo {} | $SCRIPT_DIR/inc_preview_menu.sh ' \
+	  --preview='echo {} | "$SCRIPT_DIR/inc_preview_menu.sh" ' \
 	  --preview-window=up:6:wrap
 )
 fi
 
 export selected_menu
-
 source "$SCRIPT_DIR/inc_parse_line_menu.sh"
 
 # Print chosen server's name
@@ -61,5 +60,19 @@ echo "-------------------------------------"
 echo " Running $menu_title - command: $menu_command"
 echo "-------------------------------------"
 
-"$SCRIPT_DIR/$menu_command"
+if [ "$menu_command" = "kill" ]; then
+    echo "It was good knowing you."
+	exit 1
+else
 
+	"$SCRIPT_DIR/$menu_command"
+
+	echo "-------------------------------------"
+	echo " Command ended. Press any key to go back to atomique menu..."
+	echo "-------------------------------------"
+
+	read -n 1 -s
+
+	"$SCRIPT_DIR/atomique_menu.sh"
+
+fi

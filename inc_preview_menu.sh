@@ -7,16 +7,16 @@ while IFS= read -r line; do
     piped_input+="$line"
 done
 
-selected_server=$piped_input
+selected_menu=$piped_input
+export selected_menu
 
 # Define variables
 source "$SCRIPT_DIR/inc_parse_line_menu.sh"
 
 echo "---------------------------------"
-echo  $title
+echo  $title - $menu_title
 echo "---------------------------------"
 
-echo "Action:  $menu_title  " 
 echo "Command: $menu_command"
 echo "Info:    $menu_info"
 

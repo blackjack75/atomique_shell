@@ -38,7 +38,7 @@ selected_server=$(
 
   cat $SERVERS_PATH/*.txt | \
 	  fzf --delimiter='|'  \
-	  --preview='echo {} | $SCRIPT_DIR/inc_preview_ssh.sh ' \
+	  --preview='echo {} | "$SCRIPT_DIR/inc_preview_ssh.sh" ' \
 	  --preview-window=up:6:wrap
 )
 fi

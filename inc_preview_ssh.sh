@@ -8,6 +8,7 @@ while IFS= read -r line; do
 done
 
 selected_server=$piped_input
+export selected_server
 
 # Define variables
 source "$SCRIPT_DIR/inc_parse_line_ssh.sh"
