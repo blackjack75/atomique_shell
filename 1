@@ -1,0 +1,24 @@
+#!/usr/bin/env bash   
+
+folder=~/atomique/data/servers
+echo "Opening editor to EDIT ssh  servers"
+
+
+$EDITOR $folder
+
+read -n 1 -p "Do you want to commit changes? (y/n): " commit_response
+echo
+
+if [[ $commit_response == "y" ]]; then
+   "$SCRIPT_DIR/atomique_ssh_commit_changes.sh"
+else then
+    read -n 1 -p "Do you want to revert changes? (y/n): " revert_response
+    echo
+    if [[ $revert_response == "y" ]]; then
+        echo "Revert!"
+    else
+        echo "No changes were committed or reverted."
+fi
+
+
+

@@ -13,9 +13,9 @@ export selected_server
 # Define variables
 source "$SCRIPT_DIR/inc_parse_line_ssh.sh"
 
-echo "---------------------------------"
+echo $SEPLINE
 echo $title
-echo "---------------------------------"
+echo $SEPLINE
 
 clean_name=$(echo "$server_name" | tr -cd '[:alnum:]_.-' | tr -s '_')-ssh
 
@@ -26,6 +26,6 @@ echo "Host: $server_host   User: $server_user   Port: $server_port"
 echo "Keywords: $server_keywords    " 
 
 
-echo "---------------------------------"
+echo $SEPLINE
 
 

@@ -30,7 +30,7 @@ SERVERS_PATH=~/atomique/data/servers
 if [ "$FZF_CMD" == "fzy" ]; then
 selected_server=$(
   cat $SERVERS_PATH/*.txt | \
-	  fzy -i
+	  fzy -S
 )
 else
 
@@ -39,7 +39,7 @@ selected_server=$(
   cat $SERVERS_PATH/*.txt | \
 	  fzf --delimiter='|'  \
 	  --preview='echo {} | "$SCRIPT_DIR/inc_preview_ssh.sh" ' \
-	  --preview-window=up:6:wrap
+	  --preview-window=up:6:wrap  
 )
 fi
 

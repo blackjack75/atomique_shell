@@ -1,6 +1,7 @@
 #!/usr/bin/env bash   
 
 export SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
+source "$SCRIPT_DIR/inc_decoration.sh"
 
 tmux rename-window "atomique-menu"
 
@@ -19,13 +20,13 @@ then
 fi
 
 clear
-title=" ATOMIQUE.ORG - SELECT FEATURE"
+title="ATOMIQUE.ORG"
 export title
 
 
-echo "--------------------------------------------"
+echo $TOPLINE
 echo $title
-echo "--------------------------------------------"
+echo $TOPLINE
 
 
 #--------------------------------------------------------------------
@@ -34,7 +35,7 @@ echo "--------------------------------------------"
 if [ "$FZF_CMD" == "fzy" ]; then
 selected_menu=$(
   cat "$SCRIPT_DIR/atomique_menu_entries.txt" | \
-	  fzy -i
+	  fzy -i 
 )
 else
 
@@ -46,7 +47,7 @@ selected_menu=$(
   cat "$SCRIPT_DIR/atomique_menu_entries.txt" | \
 	  fzf --delimiter='|'  \
 	  --preview='echo {} | "$SCRIPT_DIR/inc_preview_menu.sh" ' \
-	  --preview-window=up:6:wrap
+	  --preview-window=up:6:wrap --exact 
 )
 fi
 
@@ -56,9 +57,9 @@ source "$SCRIPT_DIR/inc_parse_line_menu.sh"
 # Print chosen server's name
 clear
 
-echo "-------------------------------------"
+echo $SEPLINE
 echo " Running $menu_title - command: $menu_command"
-echo "-------------------------------------"
+echo $SEPLINE
 
 if [ "$menu_command" = "kill" ]; then
     echo "It was good knowing you."
@@ -67,10 +68,9 @@ else
 
 	"$SCRIPT_DIR/$menu_command"
         echo " "
-	echo "-------------------------------------"
+	echo $SEPLINE
 	echo " Command ended. Press any key to go back to atomique menu..."
-	echo "-------------------------------------"
-
+        echo $SEPLINE
 	read -n 1 -s
 
 	"$SCRIPT_DIR/atomique_menu.sh"

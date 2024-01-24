@@ -13,13 +13,13 @@ export selected_menu
 # Define variables
 source "$SCRIPT_DIR/inc_parse_line_menu.sh"
 
-echo "---------------------------------"
+echo $SEPLINE
 echo  $title - $menu_title
-echo "---------------------------------"
+echo $SEPLINE
 
 echo "Command: $menu_command"
 echo "Info:    $menu_info"
 
-echo "---------------------------------"
+echo $SEPLINE
 
 

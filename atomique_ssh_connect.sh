@@ -4,6 +4,8 @@ title="Select Server to connect to"
 
 
 export SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
+
+source "$SCRIPT_DIR/inc_decoration.sh"
 source "$SCRIPT_DIR/inc_select_server.sh"
 
 
