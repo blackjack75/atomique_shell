@@ -1,9 +1,10 @@
-EXIT        | kill | Exit or quite this menu cleanly
-LICENSE     | atomique_license.sh | Shows the License, because you know you like
-ABOUT       | atomique_menu_info.sh | Show info about this crazy little thing
-UPDATE SELF      | update_git.sh | Git pull latest changes for atomique 
-WINSLEEP         | atomique_windows_force_sleep.sh | Connect to a Windows Server running OpenSSH and send command to put it to sleep 
-BOOKMARKS        | atomique_bookmarks.sh | TODO store bookmarks here
-SSH Edit Servers | atomique_ssh_edit.sh | Edit servers files
-SSH Copy ID      | atomique_ssh_copy_id_to_server.sh | Pick a SSH server and copy your public key there
-SSH CONNECT      | atomique_ssh_connect.sh | Connect to SSH servers defined in ~/atomique/data/servers/*.txt
+Exit             | kill | Exit or quit cleanly
+
+License          | atomique_license.sh | Shows the License
+About            | atomique_about.sh | Info about this
+Update self      | update_git.sh | Git pull latest changes for atomique 
+Windows Sleeper  | cmd_sleep.sh | Sleep a Windows Server 
+Bookmarks        | cmd_bookmarks.sh | Pick bookmarks 
+SSH Edit Servers | cmd_ssh_edit.sh | Edit servers files
+SSH Copy ID      | cmd_ssh_copy_id.sh | Copy public key to SSH server
+SSH Connect      | cmd_ssh_connect.sh | Connect to SSH servers

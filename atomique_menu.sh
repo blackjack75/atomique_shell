@@ -56,18 +56,23 @@ source "$SCRIPT_DIR/inc_parse_line_menu.sh"
 
 # Print chosen server's name
 clear
-
-echo $SEPLINE
-echo " Running $menu_title - command: $menu_command"
-echo $SEPLINE
-
 if [ "$menu_command" = "kill" ]; then
     echo "It was good knowing you."
 	exit 1
 else
 
+
+echo $SEPLINE
+if [ "$menu_command" = "" ]; then
+	echo "No command. You picked an empty line I guess :-)"
+else
+	echo " Running $menu_title - command: $menu_command"
+        echo $SEPLINE
+	echo
 	"$SCRIPT_DIR/$menu_command"
-        echo " "
+fi
+
+        echo 
 	echo $SEPLINE
 	echo " Command ended. Press any key to go back to atomique menu..."
         echo $SEPLINE
