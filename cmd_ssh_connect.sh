@@ -25,6 +25,11 @@ cmd="tmux new-session -A -s \"$remoteName\""
 cmdMac="source ~/.zshrc;tmux new-session -A -s \"$remoteName\""
 cmdWin=
 
+echo $SEPLINE
+if [ "$server_host_and_user" = "" ]; then
+	echo "No server selected. You picked an empty line I guess :-)"
+else
+
 if [[ $(echo "$server_keywords" | grep -i "macintosh") ]]; 
   then 
 	  echo "Connecting to a Mac..."; 
@@ -39,5 +44,17 @@ elif [[ $(echo "$server_keywords" | grep -i "windows") ]];
           ssh -p $server_port -t $server_host_and_user $cmd;
 fi
 
-# Set tmux window name to default (empty string)
-tmux rename-window "disconnected from ssh"
+
+	# Set tmux window name to default (empty string)
+        tmux rename-window "disconnected from ssh"
+
+        echo 
+	echo $SEPLINE
+
+	echo " SSH Command ended. Press any key to go back to atomique SSH menu..."
+        echo $SEPLINE
+	read -n 1 -s
+
+	"$SCRIPT_DIR/cmd_ssh_connect.sh"
+
+fi
