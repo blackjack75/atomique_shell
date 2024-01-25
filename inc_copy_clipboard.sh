@@ -1,14 +1,17 @@
 
 # Prefer https://getclipboard.app if installed
+# Somehow on Mac we get the 'cb' command but on Linux distributions
+# it's usually only 'clipboard' and no shortcut
+# I have an alias myself but it's not always there
 if command -v clipboard &> /dev/null; then
 	
 	echo "Copied contents to Clipboard Project (command: clipboard)"
 	cmd='clipboard'
 
-elif command -v clipboard &> /dev/null; then
+elif command -v cb &> /dev/null; then
 	
 	echo "Copied contents to Clipboard Project (command: cb)"
-	cmd='clipboard'
+	cmd='cb'
 
 elif [ "$(uname)" == "Darwin" ]; then
     
@@ -18,7 +21,7 @@ elif [ "$(uname)" == "Darwin" ]; then
 elif [ -n "$DISPLAY" ]; then
     
 	echo "Copied contents to X11 clipboard"
-        cmdX11='xclip -selection clipboard'
+        cmd='xclip -selection clipboard'
 
 elif [[ "$LC_TERMINAL" = "ShellFish" ]]; then    
 	
