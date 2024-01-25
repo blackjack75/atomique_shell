@@ -7,7 +7,11 @@ oi# WORK IN PROGRESS USE AT YOUR OWN RISK
 Data such as servers must be in ~/atomique/data : 
 
     mkdir -p ~/atomique/data/servers/
-    ~/atomique/data/servers/myservers.txt
+
+Multiple files can be put in this folder:
+    
+    ~/atomique/data/servers/my_servers.txt
+    ~/atomique/data/servers/my_computers.txt
 
 You can add other .txt files in the same folder.
 
@@ -26,14 +30,17 @@ or (for me) as committer with proper ~/.ssh/config:
  
     git clone git@github.com-servers:blackjack75/servers_santiago.git ~/atomique/data
 
-### Add the bin folder to your PATH in .zshrc or .bashrc
+### Add the bin folder to your PATH in .zshrc or .bashrc so you can type *aa* for the menu or *aassh* for the SSH connect screen
 
     ~/atomique/code/atomique_shell/bin
 
-### Add this line to your tmux.conf file
-### so that control-B +H opens list of ssh servers
 
-    bind-key h new-window -n "ssh-selector" "$SHELL --login -i -c 'sshc'"
+# Add this line to your tmux.conf file
+# so that control-B +A opens list of atomique main menu ssh servers 
+# and     control-B +H opens list of atomtique ssh servers 
+bind-key h new-window -n "atomique-ssh-selector" "$SHELL --login -i -c 'aassh'" 
+bind-key a new-window -n "atomique--menu" "$SHELL --login -i -c 'aa'"
+
 
 ### Install cron model to update this repo hourly
 ### (makes sense only for DEV on several machines)
