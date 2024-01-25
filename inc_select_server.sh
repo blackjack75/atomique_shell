@@ -30,7 +30,7 @@ SERVERS_PATH=~/atomique/data/servers
 if [ "$FZF_CMD" == "fzy" ]; then
 selected_server=$(
   cat $SERVERS_PATH/*.txt | \
-	  fzy -S
+	  fzy -i
 )
 else
 
