@@ -17,6 +17,13 @@ Multiple files can be put in this folder:
     ~/atomique/data/servers/my_servers.txt
     ~/atomique/data/servers/my_computers.txt
 
+Format is simply one server per line (name, host, port, keywords all separated by a pipe)
+
+    MacAir    | user@192.168.0.22    | 22 | Macintosh Laptop M1
+    MacPro    | user@192.168.0.33    | 22 | Macintosh Trashcan Desktop Intel
+    MacStudio | user@192.168.0.44    | 22 | Macintosh Desktop M1 Studio Dev
+    G4 Cube   | olduser@192.168.0.55 | 22 | Macintosh Leopard PowerPC
+
 You can add other .txt files in the same folder.
 
 
