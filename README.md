@@ -2,7 +2,7 @@
 # THIS IS NOT READY FOR CONSUMPTION
 # I'LL MAKE SURE TO UPDATE THIS WHEN IT CHANGES
 
-# The documentation is mostly for me now, so I don' forget :-)
+# The documentation is mostly for me now, so I don't forget :-)
 
 
 # Installing
