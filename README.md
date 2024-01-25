@@ -9,6 +9,7 @@
 
 
 Data such as servers must be in ~/atomique/data : 
+I have one separate repository for all my data that I just sync there. I need to share an example repository later when this is ready for prime time.
 
     mkdir -p ~/atomique/data/servers/
 
