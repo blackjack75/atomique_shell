@@ -5,28 +5,8 @@
 # The documentation is mostly for me now, so I don't forget :-)
 
 
-# Installing
 
-
-Data such as servers must be in ~/atomique/data : 
-I have one separate repository for all my data that I just sync there. I need to share an example repository later when this is ready for prime time.
-
-    mkdir -p ~/atomique/data/servers/
-
-Multiple files can be put in this folder:
-
-    ~/atomique/data/servers/my_servers.txt
-    ~/atomique/data/servers/my_computers.txt
-
-Format is simply one server per line (name, host, port, keywords all separated by a pipe)
-
-    MacAir    | user@192.168.0.22    | 22 | Macintosh Laptop M1
-    MacPro    | user@192.168.0.33    | 22 | Macintosh Trashcan Desktop Intel HomeServer
-    MacStudio | user@192.168.0.44    | 22 | Macintosh Desktop M1 Studio Dev
-    G4 Cube   | olduser@192.168.0.55 | 22 | Macintosh Leopard PowerPC
-    Lema.org  | someuser@lema.org    | 22 | Debian Linux Website
-
-
+# Install code repos
 
 Code repositories go in:
 
@@ -46,8 +26,6 @@ Add the bin folder to your PATH in .zshrc or .bashrc so you can type *aa* for th
 
     export PATH=~/atomique/code/atomique_shell/bin:$PATH
 
-
-
 Add this line to your tmux.conf file
 so that control-B +A opens list of atomique main menu ssh servers 
 and     control-B +H opens list of atomtique ssh servers 
@@ -64,3 +42,22 @@ same script can be used to update data repo
     ./install_cron.sh
     
 
+# Setting up data folders
+
+Data such as servers must be in ~/atomique/data : 
+I have one separate repository for all my data that I just sync there. I need to share an example repository later when this is ready for prime time.
+
+    mkdir -p ~/atomique/data/servers/
+
+Multiple files can be put in this folder:
+
+    ~/atomique/data/servers/my_servers.txt
+    ~/atomique/data/servers/my_computers.txt
+
+Format is simply one server per line (name, host, port, keywords all separated by a pipe)
+
+    MacAir    | user@192.168.0.22    | 22 | Macintosh Laptop M1
+    MacPro    | user@192.168.0.33    | 22 | Macintosh Trashcan Desktop Intel HomeServer
+    MacStudio | user@192.168.0.44    | 22 | Macintosh Desktop M1 Studio Dev
+    G4 Cube   | olduser@192.168.0.55 | 22 | Macintosh Leopard PowerPC
+    Lema.org  | someuser@lema.org    | 22 | Debian Linux Website
