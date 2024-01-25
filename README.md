@@ -13,7 +13,7 @@
 
 * Haiku doesn't work as well as fzf doesn't have a port today (requires a modern GoLang).
 
-# Install code repos
+# Install as a end user
 
 Code repositories go in:
 
@@ -22,12 +22,6 @@ Code repositories go in:
 So to install it as a user you do: 
 
     git clone "https://github.com/blackjack75/atomique_shell" ~/atomique/code/atomique_shell 
-
-or (for me) as committer with proper ~/.ssh/config:
-
-    git clone git@github.com-atomique-shell:blackjack75/atomique_shell.git ~/atomique/code/atomique_shell
- 
-    git clone git@github.com-servers:blackjack75/servers_santiago.git ~/atomique/data
 
 Add the bin folder to your PATH in .zshrc or .bashrc 
 so you can type *aa* for the main menu 
@@ -70,3 +64,12 @@ Format is simply one server per line (name, host, port, keywords all separated b
     MacStudio | user@192.168.0.44    | 22 | Macintosh Desktop M1 Studio Dev
     G4 Cube   | olduser@192.168.0.55 | 22 | Macintosh Leopard PowerPC
     Lema.org  | someuser@lema.org    | 22 | Debian Linux Website
+
+
+# Install as a developer (that's for me so I can copy paste)
+Assumes you the committer has a proper deploy config  ~/.ssh/config:
+
+    git clone git@github.com-atomique-shell:blackjack75/atomique_shell.git ~/atomique/code/atomique_shell
+ 
+    git clone git@github.com-servers:blackjack75/servers_santiago.git ~/atomique/data
+
