@@ -44,7 +44,8 @@ or (for me) as committer with proper ~/.ssh/config:
 
 Add the bin folder to your PATH in .zshrc or .bashrc so you can type *aa* for the menu or *aassh* for the SSH connect screen
 
-    ~/atomique/code/atomique_shell/bin
+    export PATH=~/atomique/code/atomique_shell/bin:$PATH
+
 
 
 Add this line to your tmux.conf file
