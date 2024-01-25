@@ -19,7 +19,7 @@ elif command -v clipboard &> /dev/null; then
 
 		echo "Copied contents to Clipboard Project (command: clipboard)"
 		cmd='clipboard copy'
-
+        fi
 elif [ "$(uname)" == "Darwin" ]; then
     
 	echo "Copied contents to Mac clipboard"
