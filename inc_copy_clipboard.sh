@@ -1,23 +1,29 @@
 
-cmdX11='xclip -selection clipboard'
-cmdMac='pbcopy'
-cmdSF='pbcopy'
-#pbcopy also works in ShellFish on iOS
+# Prefer https://getclipboard.app if installed
+if command -v clipboard &> /dev/null; then
+	
+	echo "Copied contents to Clipboard Project (command: clipboard)"
+	cmd='clipboard'
 
-if [ "$(uname)" == "Darwin" ]; then
+elif command -v clipboard &> /dev/null; then
+	
+	echo "Copied contents to Clipboard Project (command: cb)"
+	cmd='clipboard'
+
+elif [ "$(uname)" == "Darwin" ]; then
     
 	echo "Copied contents to Mac clipboard"
-	cmd=$cmdMac
+        cmd='pbcopy'
 
 elif [ -n "$DISPLAY" ]; then
     
 	echo "Copied contents to X11 clipboard"
-	cmd=$cmdX11
+        cmdX11='xclip -selection clipboard'
 
 elif [[ "$LC_TERMINAL" = "ShellFish" ]]; then    
 	
 	echo "Copied contents to ShellFish clipboard"
-        cmd=$cmdSF
+        cmd='pbcopy'
         source ~/.shellfishrc
 else
 	echo "Unknown clipboard!"
