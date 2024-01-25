@@ -21,6 +21,10 @@ tmux rename-window "$clean_name-$nbwin"
 remoteName="fromSSH-$nbwin"
 # Connect to the chosen server using its IP address (second field)
 
+#Create STATUS pane
+statusInfo="$server_host_and_user"
+tmux split-window -l 4 -v -c '#{pane_current_path}' "while true; do $SCRIPT_DIR/inc_status_ssh.sh \"$statusInfo\" ; sleep 1; done" \; select-pane -t:.0
+
 cmd="tmux new-session -A -s \"$remoteName\""
 cmdMac="source ~/.zshrc;tmux new-session -A -s \"$remoteName\""
 cmdWin=
@@ -47,6 +51,9 @@ fi
 
 	# Set tmux window name to default (empty string)
         tmux rename-window "disconnected from ssh"
+
+	#kill status pane
+	tmux kill-pane -t 1
 
         echo 
 	echo $SEPLINE
