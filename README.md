@@ -4,7 +4,14 @@
 
 # The documentation is mostly for me now, so I don't forget :-)
 
+# Supported platforms
 
+- Linux
+- Mac
+- FreeBSD
+- Haiku *
+
+* Haiku doesn't work as well as fzf doesn't have a port today (requires a modern GoLang).
 
 # Install code repos
 
