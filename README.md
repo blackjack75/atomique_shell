@@ -42,21 +42,22 @@ or (for me) as committer with proper ~/.ssh/config:
  
     git clone git@github.com-servers:blackjack75/servers_santiago.git ~/atomique/data
 
-### Add the bin folder to your PATH in .zshrc or .bashrc so you can type *aa* for the menu or *aassh* for the SSH connect screen
+Add the bin folder to your PATH in .zshrc or .bashrc so you can type *aa* for the menu or *aassh* for the SSH connect screen
 
     ~/atomique/code/atomique_shell/bin
 
 
-# Add this line to your tmux.conf file
-# so that control-B +A opens list of atomique main menu ssh servers 
-# and     control-B +H opens list of atomtique ssh servers 
-bind-key h new-window -n "atomique-ssh-selector" "$SHELL --login -i -c 'aassh'" 
-bind-key a new-window -n "atomique--menu" "$SHELL --login -i -c 'aa'"
+Add this line to your tmux.conf file
+so that control-B +A opens list of atomique main menu ssh servers 
+and     control-B +H opens list of atomtique ssh servers 
+
+    bind-key h new-window -n "atomique-ssh-selector" "$SHELL --login -i -c 'aassh'" 
+    bind-key a new-window -n "atomique--menu" "$SHELL --login -i -c 'aa'"
 
 
-### Install cron model to update this repo hourly
-### (makes sense only for DEV on several machines)
-### same script can be used to update data repo
+Install cron model to update this repo hourly
+(makes sense only for DEV on several machines)
+same script can be used to update data repo
 
     cd ~/atomique/code/atomique_shell
     ./install_cron.sh
