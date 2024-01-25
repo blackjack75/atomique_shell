@@ -11,7 +11,7 @@
 - FreeBSD
 - Haiku *
 
-* Haiku doesn't work as well as fzf doesn't have a port today (requires a modern GoLang).
+* Haiku doesn't work as well as fzf doesn't have a port today (requires a modern GoLang) so it falls back on fzy which has no preview and such nice layout.
 
 # Install as a end user
 
