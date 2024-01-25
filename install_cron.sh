@@ -26,8 +26,8 @@ sudo cp -f "$SCRIPT_DIR/atomique_shell_cron_update_entry" $DEST_CRON_UPD
 
 #Replace the path of script and the user
 #We use : and not / as separator so we don't have to escape slashes in path
-sudo sed -i'' -e "s:REPLACEMEPATH:$SCRIPT_DIR:g" "$DEST_CRON_UPD"
-sudo sed -i'' -e "s:REPLACEMEUSER:$LOCALUSER:g" "$DEST_CRON_UPD"
+sudo sed -i '' -e "s:REPLACEMEPATH:$SCRIPT_DIR:g" "$DEST_CRON_UPD"
+sudo sed -i '' -e "s:REPLACEMEUSER:$LOCALUSER:g" "$DEST_CRON_UPD"
 
 #-----------------------
 
