@@ -22,7 +22,9 @@ or (for me) as committer with proper ~/.ssh/config:
  
     git clone git@github.com-servers:blackjack75/servers_santiago.git ~/atomique/data
 
-Add the bin folder to your PATH in .zshrc or .bashrc so you can type *aa* for the menu or *aassh* for the SSH connect screen
+Add the bin folder to your PATH in .zshrc or .bashrc 
+so you can type *aa* for the main menu 
+or *aassh* for the SSH connect menu
 
     export PATH=~/atomique/code/atomique_shell/bin:$PATH
 
@@ -35,8 +37,8 @@ and     control-B +H opens list of atomtique ssh servers
 
 
 Install cron model to update this repo hourly
-(makes sense only for DEV on several machines)
-same script can be used to update data repo
+(makes sense only for DEV on several machines on different architectures)
+Same script can be used to update data repo 
 
     cd ~/atomique/code/atomique_shell
     ./install_cron.sh
