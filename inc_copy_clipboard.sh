@@ -4,7 +4,12 @@
 # it's usually only 'clipboard' and no shortcut
 # I have an alias myself but it's not always there
 
-if command -v cb &> /dev/null; then
+if [[ "$LC_TERMINAL" = "ShellFish" ]]; then    
+	
+	echo "Copied contents to ShellFish clipboard"
+        cmd='pbcopy'
+        source ~/.shellfishrc
+elif command -v cb &> /dev/null; then
 	
 	echo "Copied contents to Clipboard Project (command: cb)"
 	cmd='cb copy'
@@ -30,11 +35,6 @@ elif [ -n "$DISPLAY" ]; then
 	echo "Copied contents to X11 clipboard"
         cmd='xclip -selection clipboard'
 
-elif [[ "$LC_TERMINAL" = "ShellFish" ]]; then    
-	
-	echo "Copied contents to ShellFish clipboard"
-        cmd='pbcopy'
-        source ~/.shellfishrc
 else
 	echo "Unknown clipboard!"
 	cmd='echo IDontKnowHowToCopyHere'
