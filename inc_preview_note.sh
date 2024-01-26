@@ -1,22 +1,17 @@
 #!/usr/bin/env bash 
 
-piped_input=""
-
-# Read input line by line and append to the variable
-while IFS= read -r line; do
-    piped_input+="$line"
-done
-
-selected_file=$piped_input
-
+filename="$1"
+query="$2"
+nameshort=$(echo "$string" | sed 's/.*notes/notes/')
 
 echo $SEPLINE
-echo " $title - $menu_title" 
+echo " File: $nameshort"
+echo " Query: $query"
 echo $SEPLINE
 
-echo $selected_file
-echo " Command: $menu_command"
-echo " Info:    $menu_info"
-
-echo $SEPLINE
+if [ -z "$query" ]; then
+  head -n 10 "$filename"
+else
+  rg --ignore-case --pretty --context 3 "$query" "$filename"
+fi
 

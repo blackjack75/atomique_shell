@@ -26,29 +26,36 @@ fi
 
 export title
 
-SERVERS_PATH=~/atomique/data/servers
+DIR=~/atomique/data/notes/
 
 ## Check if FZF_CMD is equal to fzy
 if [ "$FZF_CMD" == "fzy" ]; then
 selected_file=$(
-	rg -i -l --files-with-matches ''i \
-	     	~/atomique/data/notes/**/*.txt \
-	  fzy -i
+echo "NO WAY THIS CAN WORK eith onlz fzy"
+fzy -i
 )
 else
 
-	  
-selected_file=$(
-	
-	rg -i -l --files-with-matches ''i \
-	     	~/atomique/data/notes/**/*.txt \
-		 | fzf --preview='cat {}  | "$SCRIPT_DIR/inc_preview_note.sh" ' \
-		 --preview-window=up:20:wrap  	
+# 1. Search for text in files using Ripgrep
+# 2. Interactively narrow down the list using fzf
+# 3. Open the file in Vim
+IFS=: read -ra selected < <(
+  rg --color=always --line-number --no-heading --smart-case "${*:-}" $DIR |
+    fzf --ansi \
+        --color "hl:-1:underline,hl+:-1:underline:reverse" \
+        --delimiter : \
+        --preview 'bat --color=always {1} --highlight-line {2}' \
+        --preview-window 'up,60%,border-bottom,+{2}+3/3,~3'
 )
-		fi
+[ -n "${selected[0]}" ] 
 
+#&& vim "${selected[0]}" "+${selected[1]}"
 
-# Print file name
+selected_file=${selected[0]}
+
+#echo selected vim "${selected[0]}" "+${selected[1]}"
+fi
+
 clear
 
 echo "-------------------------------------"
