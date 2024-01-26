@@ -4,6 +4,7 @@ License          | atomique_license.sh | Shows the License
 About            | atomique_about.sh   | Info about this
 Update self      | cmd_update_all.sh   | Git pull latest changes for atomique 
 Windows Sleeper  | cmd_win_sleep.sh    | Sleep a Windows Server 
+Shell GPT        | cmd_gpt.sh          | Chat with a dumb bot
 Bookmarks        | cmd_bookmarks.sh    | Pick bookmarks
 Note Write       | cmd_note_write.sh   | Create New Note 
 Note Search      | cmd_note_search.sh  | Notes Find and Edit 
