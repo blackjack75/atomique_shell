@@ -13,7 +13,9 @@ fi
 if ! command -v $FZF_CMD &> /dev/null
 then
     echo "fzf or fzy is not installed. Please install one to continue." 
+    echo 5
     exit 1
+
 fi
 
 # title variable must be defined by parent script
