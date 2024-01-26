@@ -29,7 +29,8 @@ SERVERS_PATH=~/atomique/data/servers
 ## Check if FZF_CMD is equal to fzy
 if [ "$FZF_CMD" == "fzy" ]; then
 selected_file=$(
-  cat $SERVERS_PATH/*.txt | \
+	rg -i -l --files-with-matches ''i \
+	     	~/atomique/data/notes/**/*.txt \
 	  fzy -i
 )
 else
@@ -40,9 +41,9 @@ selected_file=$(
 	rg -i -l --files-with-matches ''i \
 	     	~/atomique/data/notes/**/*.txt \
 		 | fzf --preview='cat {}  | "$SCRIPT_DIR/inc_preview_note.sh" ' \
-		 --preview-window=up:20:wrap  
+		 --preview-window=up:20:wrap  	
 )
-fi
+		fi
 
 
 # Print file name
