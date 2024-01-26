@@ -14,12 +14,11 @@ folder=$(realpath ~/atomique/data/notes/dump/)
 prefix="dump"
 
 i=1
-while [[ -e "$folder/$prefix$i.txt" ]]; do
-        
+while [[ -e "$folder/$prefix$i.md" ]]; do
       	((i++))
 done
 
-nfile="$folder/$prefix$i.txt"
+nfile="$folder/$prefix$i.md"
 
 $EDITOR "$nfile"
 
