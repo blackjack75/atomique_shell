@@ -65,6 +65,6 @@ fi
         echo $SEPLINE
 	read -n 1 -s
 
-	"$SCRIPT_DIR/cmd_ssh_connect.sh"
+	"$SCRIPT_DIR/cmd/cmd_ssh_connect.sh"
 
 fi

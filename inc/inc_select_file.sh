@@ -38,7 +38,7 @@ else
 selected_file=$(
 
   find $FOLDER -type f -name "$FILTER" \
-	  | fzf --preview='echo {} | "$SCRIPT_DIR/inc_preview_file.sh" ' \
+	  | fzf --preview='echo {} | "$SCRIPT_DIR/inc/inc_preview_file.sh" ' \
 	  --preview-window=up:6:wrap  
 )
 fi
