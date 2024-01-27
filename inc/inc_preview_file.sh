@@ -19,7 +19,7 @@ echo " File : $selected_file"
 echo $SEPLINE
 
 maxlines=10
-cutme=$(head -n "$maxlines" -q "$selected_file")
+cutme=$(head -n "$maxlines"  "$selected_file")
 
 nb=0
 # Print each line of cutme on a separate line

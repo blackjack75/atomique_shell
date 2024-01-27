@@ -18,7 +18,8 @@ source "$SCRIPT_DIR/inc/inc_select_note.sh"
 tmux rename-window "Note-search"
 
 if [ -n "$selected_file" ]; then
-$EDITOR $selected_file
+vim  $selected_file
+#$EDITOR $selected_file
 fi
 
 # Set tmux window name to default (empty string)

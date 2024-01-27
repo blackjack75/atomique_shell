@@ -49,11 +49,11 @@ IFS=: read -ra selected < <(
 )
 [ -n "${selected[0]}" ] 
 
+# We can get both the file and positions (not used right now)
 #&& vim "${selected[0]}" "+${selected[1]}"
 
 selected_file=${selected[0]}
 
-#echo selected vim "${selected[0]}" "+${selected[1]}"
 fi
 
 clear

@@ -26,7 +26,7 @@ remoteName="fromSSH-$nbwin"
 
 #Create STATUS pane
 statusInfo="$server_name $server_host_and_user : $server_port"
-tmux split-window -l 4 -v -c '#{pane_current_path}' "$SCRIPT_DIR/inc/inc_status_ssh.sh \"$statusInfo\" " \; select-pane -t:.0
+tmux split-window -l 2 -v -c '#{pane_current_path}' "$SCRIPT_DIR/inc/inc_status_ssh.sh \"$statusInfo\" " \; select-pane -t:.0
 
 cmd="tmux new-session -A -s \"$remoteName\""
 cmdMac="source ~/.zshrc;tmux new-session -A -s \"$remoteName\""
