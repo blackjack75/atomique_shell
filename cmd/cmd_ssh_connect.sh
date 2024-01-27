@@ -2,12 +2,15 @@
 
 title="Select Server to connect to"
 
+# If script was included from main menu the dir is already defined
+# otherwise point to parent of 'cmd' dir
+if [ -z "$var" ]
+then
+	export SCRIPT_DIR="$(dirname "$(readlink -f "$0")")/../"
+fi
 
-export SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
-
-source "$SCRIPT_DIR/inc_decoration.sh"
-source "$SCRIPT_DIR/inc_select_server.sh"
-
+source "$SCRIPT_DIR/inc/inc_decoration.sh"
+source "$SCRIPT_DIR/inc/inc_select_server.sh"
 
 # Rename the window
 clean_name=$(echo "$server_name" | tr -cd '[:alnum:]_.-' | tr -s '_')-ssh
@@ -23,7 +26,7 @@ remoteName="fromSSH-$nbwin"
 
 #Create STATUS pane
 statusInfo="$server_name $server_host_and_user : $server_port"
-tmux split-window -l 4 -v -c '#{pane_current_path}' "$SCRIPT_DIR/inc_status_ssh.sh \"$statusInfo\" " \; select-pane -t:.0
+tmux split-window -l 4 -v -c '#{pane_current_path}' "$SCRIPT_DIR/inc/inc_status_ssh.sh \"$statusInfo\" " \; select-pane -t:.0
 
 cmd="tmux new-session -A -s \"$remoteName\""
 cmdMac="source ~/.zshrc;tmux new-session -A -s \"$remoteName\""

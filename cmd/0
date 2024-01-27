@@ -2,8 +2,7 @@
  
 title="Pick a server to PING"
 
-export SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
-source "$SCRIPT_DIR/inc_select_server.sh"
+source "$SCRIPT_DIR/inc/inc_select_server.sh"
 
 echo "Server is $server_host"
 

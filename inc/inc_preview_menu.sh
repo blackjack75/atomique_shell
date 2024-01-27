@@ -11,7 +11,7 @@ selected_menu=$piped_input
 export selected_menu
 
 # Define variables
-source "$SCRIPT_DIR/inc_parse_line_menu.sh"
+source "$SCRIPT_DIR/inc/inc_parse_line_menu.sh"
 
 echo $SEPLINE
 echo " $title - $menu_title" 
