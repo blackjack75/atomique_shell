@@ -17,11 +17,11 @@ echo "Server is $server_host"
 
 #we want gping to close pane on first control-c 
 # so it sends another control c to first pane then exits
-tmux split-window -v
-tmux send-keys -t 1 "gping $server_host && exit  " C-m
 
-tmux split-window -v -l 3
-tmux send-keys -t 1 "echo \"PINGING $server_name ( $server_host )\" i && read -n 1 -s key &&  tmux send-keys -t 0 C-c tmux send-keys -t 1 C-c && exit  " C-m
 
-ping $server_host  
+tmux split-window -v -p 70
+tmux split-window -v -l 2
+tmux send-keys -t 1 "gping $server_host && exit 0" C-m
+tmux send-keys -t 2 "export message=\"PING $server_name ($server_host)\" && source \"$SCRIPT_DIR/inc/inc_message_and_wait.sh\" && tmux send-keys -t 0 C-c C-c && tmux send-keys -t 1 C-c && exit" C-m
 
+ping $server_host  && exit 0
