@@ -91,3 +91,6 @@ fi
 	"$SCRIPT_DIR/cmd/atomique_menu.sh"
 
 fi
+
+
+tmux rename-window "atomique-exited"
