@@ -75,7 +75,11 @@ else
 	echo " Running $menu_title - command: $menu_command"
         echo $SEPLINE
 	echo
-	"$SCRIPT_DIR/cmd/$menu_command"
+if [[ $menu_command == cmd*.sh ]] || [[ $menu_command == atomique*.sh ]]; then 
+    "$SCRIPT_DIR/cmd/$menu_command"
+ else                                                                 
+    "$menu_command"
+ fi     
 fi
 
         echo 

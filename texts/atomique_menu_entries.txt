@@ -9,6 +9,7 @@ Bookmarks        | cmd_bookmarks.sh    | Pick bookmarks
 Note Write       | cmd_note_write.sh   | Create New Note 
 Note Search      | cmd_note_search.sh  | Notes Find and Edit 
 Ping Server      | cmd_ping_server.sh  | Ping a server  
+Mail (aerc)      | aerc                | email
 SSH Get Key      | cmd_ssh_read_key.sh | Copy a public key to clipboard  
 SSH Get Host     | cmd_ssh_get_ip.sh   | Copy server host/IP to clipboard  
 SSH Edit Servers | cmd_ssh_edit.sh     | Edit servers files
