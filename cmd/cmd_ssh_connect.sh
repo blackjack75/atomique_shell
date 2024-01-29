@@ -32,6 +32,10 @@ cmd="tmux new-session -A -s \"$remoteName\""
 cmdMac="source ~/.zshrc;tmux new-session -A -s \"$remoteName\""
 cmdWin=
 
+# some servers (such as lema.org fails with tmux-256-colors
+# this works on more platforms
+export TERM=screen-256color   
+
 echo $SEPLINE
 if [ "$server_host_and_user" = "" ]; then
 	echo "No server selected. You picked an empty line I guess :-)"
