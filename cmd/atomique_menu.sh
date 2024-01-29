@@ -72,13 +72,14 @@ echo $SEPLINE
 if [ "$menu_command" = "" ]; then
 	echo "No command. You picked an empty line I guess :-)"
 else
-	echo " Running $menu_title - command: $menu_command"
+	echo " Running $menu_title - command: [ $menu_command ]"
         echo $SEPLINE
 	echo
 if [[ $menu_command == cmd*.sh ]] || [[ $menu_command == atomique*.sh ]]; then 
     "$SCRIPT_DIR/cmd/$menu_command"
  else                                                                 
-    "$menu_command"
+	 echo "PATH is $path"
+	 "$menu_command"
  fi     
 fi
 
