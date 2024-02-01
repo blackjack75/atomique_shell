@@ -53,4 +53,7 @@ added=$((after - before))
 echo "$nburls URLs extracted from bookmarks"
 echo "Added $added new line(s) to $filename"
 
-
+echo $SEPLINE
+echo 10 latest URLS
+echo $SEPLINE
+head -n 10 $filename 
