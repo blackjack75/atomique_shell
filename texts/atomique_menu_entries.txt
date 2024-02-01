@@ -2,15 +2,17 @@ Exit             | kill | Exit or quit cleanly
 
 License          | atomique_license.sh | Shows the License
 About            | atomique_about.sh   | Info about this
-Update self      | cmd_update_all.sh   | Git pull latest changes for atomique 
+Update self      | cmd_update_code.sh  | Git pull atomique commands
+Sync data        | cmd_update_data.sh  | Git push & pull data 
 Windows Sleeper  | cmd_win_sleep.sh    | Sleep a Windows Server 
 Shell GPT        | cmd_gpt.sh          | Chat with a dumb bot
 Bookmarks        | cmd_bookmarks.sh    | Pick bookmarks
 Note Write       | cmd_note_write.sh   | Create New Note 
 Note Search      | cmd_note_search.sh  | Notes Find and Edit 
 Ping Server      | cmd_ping_server.sh  | Ping a server  
-Mail (aerc)      | aerc                | email
+Mail (aerc)      | cmd_mail.sh         | email
 Game Tint        | cmd_tint.sh         | Game Not Tetris
+Game Pong        | cmd_pong.sh         | Game Pong
 SSH Get Key      | cmd_ssh_read_key.sh | Copy a public key to clipboard  
 SSH Get Host     | cmd_ssh_get_ip.sh   | Copy server host/IP to clipboard  
 SSH Edit Servers | cmd_ssh_edit.sh     | Edit servers files

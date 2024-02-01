@@ -6,5 +6,5 @@ then
         export SCRIPT_DIR="$(dirname "$(readlink -f "$0")")/../"
 fi
 
-most $SCRIPT_DIR/LICENSE
+most -wd $SCRIPT_DIR/LICENSE
 

@@ -13,10 +13,4 @@ echo "Updating code (git pull in $SCRIPT_DIR) "
 cd $SCRIPT_DIR
 ./update_git.sh
 
-datadir=~/atomique/data
-echo "Updating data dir (git pull in $datadir)"
-
-cd $datadir
-./update_git.sh
-
 

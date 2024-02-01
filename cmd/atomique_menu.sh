@@ -25,7 +25,21 @@ then
     exit 1
 fi
 
+
+
 clear
+
+
+
+# Check if the status pane exists
+tmux list-panes -F '#{pane_current_command}' | grep -q "cmd_check_changes.sh"
+
+# If the pane does not exist, create it
+if [ $? -ne 0 ]; then
+    tmux split-window -l 3 -v -c '#{pane_current_path}' "$SCRIPT_DIR/cmd/cmd_check_changes.sh" \; select-pane -t:.0
+fi
+
+
 title="ATOMIQUE.ORG"
 export title
 
@@ -60,7 +74,9 @@ fi
 export selected_menu
 source "$SCRIPT_DIR/inc/inc_parse_line_menu.sh"
 
-# Print chosen server's name
+        #kill status pane
+        tmux kill-pane -t 1
+
 clear
 if [ "$menu_command" = "kill" ]; then
     echo "It was good knowing you."

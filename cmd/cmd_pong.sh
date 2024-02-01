@@ -8,6 +8,5 @@ then
 fi
 
 clear
-tmux rename-window "atomique-tint"
-tint -l 1
-most -wd "$SCRIPT_DIR/texts/tetris_documentation.txt" 
+tmux rename-window "atomique-pong"
+~/repos/Pong/pong

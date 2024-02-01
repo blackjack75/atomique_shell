@@ -7,7 +7,5 @@ then
         export SCRIPT_DIR="$(dirname "$(readlink -f "$0")")/../"
 fi
 
-clear
-tmux rename-window "atomique-tint"
-tint -l 1
-most -wd "$SCRIPT_DIR/texts/tetris_documentation.txt" 
+tmux rename-window "atomique-mail"
+aerc
