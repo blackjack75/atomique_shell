@@ -55,7 +55,7 @@ echo "$local_status ( $current_branch ) $changed_files"
 	if [[ "$latest_remote_commit" != "$latest_local_commit" ]]; then
 	    remote_status="⚠️ Remote has changed update needed $(date +'%H:%M:%S')"
 	else
-	    remote_status="✅ No remote change  $(date +'%H:%M:%S')"
+	    remote_status="✅ No remote changes  $(date +'%H:%M:%S')"
 	fi
 
 

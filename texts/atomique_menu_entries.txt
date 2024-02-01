@@ -1,20 +1,20 @@
 Exit             | kill | Exit or quit cleanly
 
-License          | atomique_license.sh | Shows the License
-About            | atomique_about.sh   | Info about this
-Update self      | cmd_update_code.sh  | Git pull atomique commands
-Sync data        | cmd_update_data.sh  | Git push & pull data 
-Windows Sleeper  | cmd_win_sleep.sh    | Sleep a Windows Server 
-Shell GPT        | cmd_gpt.sh          | Chat with a dumb bot
-Bookmarks        | cmd_bookmarks.sh    | Pick bookmarks
-Note Write       | cmd_note_write.sh   | Create New Note 
-Note Search      | cmd_note_search.sh  | Notes Find and Edit 
-Ping Server      | cmd_ping_server.sh  | Ping a server  
-Mail (aerc)      | cmd_mail.sh         | email
-Game Tint        | cmd_tint.sh         | Game Not Tetris
-Game Pong        | cmd_pong.sh         | Game Pong
-SSH Get Key      | cmd_ssh_read_key.sh | Copy a public key to clipboard  
-SSH Get Host     | cmd_ssh_get_ip.sh   | Copy server host/IP to clipboard  
-SSH Edit Servers | cmd_ssh_edit.sh     | Edit servers files
-SSH Copy ID      | cmd_ssh_copy_id.sh  | Copy public key to SSH server
-SSH Connect      | cmd_ssh_connect.sh  | Connect to SSH servers
+License          | atomique_lic.sh | Shows the License
+About            | atomique_abt.sh | Info about this
+Update self      | update_code.sh  | Git pull atomique commands
+Sync data        | update_data.sh  | Git push & pull data 
+Windows Sleeper  | win_sleep.sh    | Sleep a Windows Server 
+Shell GPT        | gpt.sh          | Chat with a dumb bot
+Bookmarks        | bookmarks.sh    | Pick bookmarks
+Note Write       | note_write.sh   | Create New Note 
+Note Search      | note_search.sh  | Notes Find and Edit 
+Ping Server      | ping_server.sh  | Ping a server  
+Mail (aerc)      | mail.sh         | email
+Game Tint        | tint.sh         | Game Not Tetris
+Game Pong        | pong.sh         | Game Pong
+SSH Get Key      | ssh_read_key.sh | Copy a public key to clipboard  
+SSH Get Host     | ssh_get_ip.sh   | Copy server host/IP to clipboard  
+SSH Edit Servers | ssh_edit.sh     | Edit servers files
+SSH Copy ID      | ssh_copy_id.sh  | Copy public key to SSH server
+SSH Connect      | ssh_connect.sh  | Connect to SSH servers

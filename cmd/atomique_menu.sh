@@ -32,11 +32,11 @@ clear
 
 
 # Check if the status pane exists
-tmux list-panes -F '#{pane_current_command}' | grep -q "cmd_check_changes.sh"
+tmux list-panes -F '#{pane_current_command}' | grep -q "check_changes.sh"
 
 # If the pane does not exist, create it
 if [ $? -ne 0 ]; then
-    tmux split-window -l 3 -v -c '#{pane_current_path}' "$SCRIPT_DIR/cmd/cmd_check_changes.sh" \; select-pane -t:.0
+    tmux split-window -l 4 -v -c '#{pane_current_path}' "$SCRIPT_DIR/cmd/check_changes.sh" \; select-pane -t:.0
 fi
 
 
@@ -91,10 +91,10 @@ else
 	echo " Running $menu_title - command: [ $menu_command ]"
         echo $SEPLINE
 	echo
-if [[ $menu_command == cmd*.sh ]] || [[ $menu_command == atomique*.sh ]]; then 
+if [[ $menu_command == *.sh ]]; then
     "$SCRIPT_DIR/cmd/$menu_command"
  else                                                                 
-	 echo "PATH is $path"
+	 echo "Direct command path: $path"
 	 "$menu_command"
  fi     
 fi
