@@ -11,6 +11,16 @@ tmux rename-window "atomique-tootmarks"
 READERDIR=~/atomique/data/reader
 mkdir -p $READERDIR
 
+echo "Checking auth to valid mastodon acount..."
+
+if ! grep -q "ACTIVE" <<< $(toot auth); then
+    echo "Error: Please use toot login before"
+    toot login
+fi
+
+
+echo "Getting the 20 most recent bookmarks..."
+#Use toot to extract URLs
 urls=$(toot bookmarks --no-color -c 20 -1 | grep -E --color=never 'https?://[^\s<>"]+')
 
 
