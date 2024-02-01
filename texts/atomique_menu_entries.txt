@@ -13,7 +13,7 @@ Ping Server      | ping_server.sh  | Ping a server
 Mail (aerc)      | mail.sh         | email
 Game Tint        | tint.sh         | Game Not Tetris
 Game Pong        | pong.sh         | Game Pong
-Get Tootmarks    | tootmarks.sh    | Get URLs Mastodon Bookmarks
+Get Tootmarks    | tootmarks_up.sh | Get URLs Mastodon Bookmarks
 SSH Get Key      | ssh_read_key.sh | Copy a public key to clipboard  
 SSH Get Host     | ssh_get_ip.sh   | Copy server host/IP to clipboard  
 SSH Edit Servers | ssh_edit.sh     | Edit servers files
