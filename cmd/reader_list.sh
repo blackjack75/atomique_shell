@@ -23,5 +23,9 @@ if [ "$url" = "" ]; then
 else
 
    source "$SCRIPT_DIR/cmd/reader_get.sh"
+
+   #back fo list after reading
+   source "$SCRIPT_DIR/cmd/reader_list.sh"
+
 	
 fi

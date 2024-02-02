@@ -20,7 +20,7 @@ then
       	url="https://lema.org/blog/0006_procrastinators_no_due_dates"
 fi
 
-# Google cache not possible !
+# Google cache not possible anymore !
 #url="http://webcache.googleusercontent.com/search?q=cache:$url"
 
 cache_folder="/tmp/atomique_cache"
@@ -38,13 +38,9 @@ if [ ! -f "$cached_file" ]; then
     echo "Getting page: $url"
 
     user_agent="atomique 1.0 (like Lynx 2)"
-
-	html_content=$(curl -s -A "$user_agent" -L "$url")
-
-
+    html_content=$(curl -s -A "$user_agent" -L "$url")
 
     echo "$html_content" > "$cached_file"
-    echo "Saved $(stat -c %s $cached_file) to cache $cached_file"
 
 
 else
@@ -59,13 +55,11 @@ echo "filtering..."
 tags=("script" "img" "style")
 
 # Use tidy to convert HTML to XHTML and suppress messages
-xhtml_text=$(tidy -q -asxml <<< "$html_content" 2>/dev/null)
-
+xhtml_text=$(tidy  --drop-empty-elements --drop-tags a,img,svg,style <<< "$html_content" )
 for tag in "${tags[@]}"; do
     echo Removing $tag
-    echo command is $sed_command
 #    xhtml_text=$(echo $xhtml_text | sed 's/<script[^>]*>.*<\/script>//g')
-    xhtml_text=$(echo $xhtml_text | sed 's/<$tag[^>]*>.*<\/$tag>//g')
+   # xhtml_text=$(echo $xhtml_text | sed 's/<$tag[^>]*>.*<\/$tag>//g')
 
 done
 
@@ -73,8 +67,16 @@ done
 #echo "$xhtml_text" | most -wD
 
 echo "Converting to markdown..."
-markdown_content=$(echo "$xhtml_text" | pandoc -f html -t markdown_strict --wrap=none)
+markdown_content=$(echo "$xhtml_text" | pandoc -f html -t markdown_strict --wrap=none --resource-path=) 
 
-echo "$markdown_content" | most -wD
+    echo "$markdown_content" > "$cached_file.md"
+    echo "Original size $(stat -c %s $cached_file) incache $cached_file"
+
+    echo "Markdown size $(stat -c %s $cached_file.md)"
+
+    echo "$markdown_content" | most -wD
+
+    echo "DEBUG press enter"
+    read userInput
 
 
