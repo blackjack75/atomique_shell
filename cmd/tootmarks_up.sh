@@ -21,8 +21,8 @@ fi
 
 echo "Getting the 20 most recent bookmarks..."
 #Use toot to extract URLs
-urls=$(toot bookmarks --no-color -c 20 -1 | grep -E --color=never 'https?://[^\s<>"]+')
-
+#max width is important otherwise we get newline in URLs
+urls=$(export COLUMNS=4096 && toot --no-color --max-width 4096 bookmarks -c 20 -1 | grep -E --color=never 'https?://[^\s<>"]+')
 
 
 # Define the filename

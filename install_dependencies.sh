@@ -16,3 +16,4 @@ sudo pkg install most pandoc tidy fzf ripgrep bat gping
     exit 1
 fi
 
+pipx install toot
