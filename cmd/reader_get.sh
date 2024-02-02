@@ -72,7 +72,7 @@ markdown_content=$(echo "$tidy_content" | pandoc -f html -t markdown_strict --wr
     echo "Markdown size $(stat -c %s $cached_file.md)"
 
     #echo "$markdown_content" | most -wD
-    echo "$markdown_content" | mdcat 
+    echo "$markdown_content" | mdcat -p 
     echo "DEBUG press enter"
     read userInput
 
