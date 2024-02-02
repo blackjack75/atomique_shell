@@ -17,3 +17,6 @@ sudo pkg install most pandoc tidy fzf ripgrep bat gping
 fi
 
 pipx install toot
+pipx install beautifulsoup4
+
+cargo install mdcat

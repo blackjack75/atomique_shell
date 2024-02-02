@@ -49,33 +49,30 @@ else
     html_content=$(cat "$cached_file")
 fi
 
-echo "filtering..."
+echo "Cleaning up..."
 
-# List of tags to remove
-tags=("script" "img" "style")
+tidy_content=$($SCRIPT_DIR/py/fixhtml_droptags.py $cached_file )
 
-# Use tidy to convert HTML to XHTML and suppress messages
-xhtml_text=$(tidy  --drop-empty-elements --drop-tags a,img,svg,style <<< "$html_content" )
-for tag in "${tags[@]}"; do
-    echo Removing $tag
-#    xhtml_text=$(echo $xhtml_text | sed 's/<script[^>]*>.*<\/script>//g')
-   # xhtml_text=$(echo $xhtml_text | sed 's/<$tag[^>]*>.*<\/$tag>//g')
+#tidy_content=$(tidy --force-output yes --drop-empty-elements yes  <<< "$html_content" )
 
-done
 
-#echo "$html_content" | most -wD
 #echo "$xhtml_text" | most -wD
 
 echo "Converting to markdown..."
-markdown_content=$(echo "$xhtml_text" | pandoc -f html -t markdown_strict --wrap=none --resource-path=) 
+markdown_content=$(echo "$tidy_content" | pandoc -f html -t markdown_strict --wrap=none --resource-path=) 
 
+    echo "$tidy_content" > "$cached_file.tidy"
     echo "$markdown_content" > "$cached_file.md"
-    echo "Original size $(stat -c %s $cached_file) incache $cached_file"
+    echo "Original size $(stat -c %s $cached_file) "
+    echo "incache $cached_file"
+    echo "Tidy size $(stat -c %s $cached_file.tidy)"
+    echo "incache $cached_file.tidy"
+
 
     echo "Markdown size $(stat -c %s $cached_file.md)"
 
-    echo "$markdown_content" | most -wD
-
+    #echo "$markdown_content" | most -wD
+    echo "$markdown_content" | mdcat 
     echo "DEBUG press enter"
     read userInput
 
