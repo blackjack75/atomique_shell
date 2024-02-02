@@ -11,21 +11,29 @@ def fix_html(file_name):
     soup = BeautifulSoup(html_content, 'html.parser')
 
     # Define tags to drop
-    tags_to_drop = [ 'a', 'img', 'svg', 'script']
+    tags_to_drop = [ 'meta', 'link',  'a', 'img', 'svg', 'script']
 
     # Drop specified tags
     for tag in soup.find_all(tags_to_drop):
-        tag.decompose()
-
-
-# Remove tags with class name containing "menu"
-    for tag in soup.find_all(class_=lambda x: x and 'menu' in x):
-        tag.decompose()
+        try:
+          tag.decompose()
+        except:
+          pass
 
     # Remove tags with id containing "menu"
     for tag in soup.find_all(id=lambda x: x and 'menu' in x):
-        tag.decompose()
+        try:
+          tag.decompose()
+        except:
+          pass
 
+    # Drop tags with no text or image content
+    for tag in soup.find_all():
+        try:
+          if not (tag.text.strip() or tag.find('img')):
+            tag.decompose()
+        except:
+           pass
 
     # Use prettify to automatically fix and format the HTML
     fixed_html = soup.prettify()

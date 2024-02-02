@@ -57,7 +57,13 @@ tidy_content=$($SCRIPT_DIR/py/fixhtml_droptags.py $cached_file )
 
 
      echo "Converting to markdown..."
-     markdown_content=$(echo "$tidy_content" | pandoc -f html -t markdown_strict --wrap=none --resource-path=) 
+     markdown_content=$(echo "$tidy_content" | pandoc -f html -t markdown_strict+pipe_tables --wrap=none --resource-path=)
+
+    #some span tags remain somehow after markdown conversion +
+    markdown_content=$(sed 's/<span[^>]*>//g; s/<\/span>//g' <<< "$markdown_content")
+
+    # Remove empty lines
+    markdown_content=$(echo "$markdown_content" | tr -s '\n' | sed '/^$/ {N;N;d}')
 
     echo "$tidy_content" > "$cached_file.tidy"
     echo "$markdown_content" > "$cached_file.md"
@@ -73,10 +79,11 @@ tidy_content=$($SCRIPT_DIR/py/fixhtml_droptags.py $cached_file )
     echo "Original size : $size_ori"
     echo "Tidy size: $size_tidy"
     echo "Markdown size: $size_md"
+    echo $SEPLINE
     reduced=$((100 * (size_ori - size_md) / size_ori))
     echo "Useless crap removed: $reduced %"
-
     echo $SEPLINE
+
     echo "DEBUG press enter"
     read userInput
     #echo "$markdown_content" | most -wD
