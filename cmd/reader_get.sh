@@ -56,24 +56,30 @@ tidy_content=$($SCRIPT_DIR/py/fixhtml_droptags.py $cached_file )
 #tidy_content=$(tidy --force-output yes --drop-empty-elements yes  <<< "$html_content" )
 
 
-#echo "$xhtml_text" | most -wD
-
-echo "Converting to markdown..."
-markdown_content=$(echo "$tidy_content" | pandoc -f html -t markdown_strict --wrap=none --resource-path=) 
+     echo "Converting to markdown..."
+     markdown_content=$(echo "$tidy_content" | pandoc -f html -t markdown_strict --wrap=none --resource-path=) 
 
     echo "$tidy_content" > "$cached_file.tidy"
     echo "$markdown_content" > "$cached_file.md"
-    echo "Original size $(stat -c %s $cached_file) "
+
+    size_ori=$(stat -c %s $cached_file)
+    size_tidy=$(stat -c %s $cached_file.tidy)
+    size_md=$(stat -c %s $cached_file.md)
     echo "incache $cached_file"
-    echo "Tidy size $(stat -c %s $cached_file.tidy)"
     echo "incache $cached_file.tidy"
+    echo "incache $cached_file.md"
 
+    echo $SEPLINE
+    echo "Original size : $size_ori"
+    echo "Tidy size: $size_tidy"
+    echo "Markdown size: $size_md"
+    reduced=$((100 * (size_ori - size_md) / size_ori))
+    echo "Useless crap removed: $reduced %"
 
-    echo "Markdown size $(stat -c %s $cached_file.md)"
-
-    #echo "$markdown_content" | most -wD
-    echo "$markdown_content" | mdcat -p 
+    echo $SEPLINE
     echo "DEBUG press enter"
     read userInput
+    #echo "$markdown_content" | most -wD
+    echo "$markdown_content" | mdcat -p 
 
 
