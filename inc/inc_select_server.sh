@@ -29,8 +29,12 @@ SERVERS_PATH=~/atomique/data/servers
 ## Check if FZF_CMD is equal to fzy
 if [ "$FZF_CMD" == "fzy" ]; then
 selected_server=$(
+clear
+lines=$(tput lines)
+((lines -= 2))
+
   cat $SERVERS_PATH/*.txt | \
-	  fzy -i
+	  fzy -i -l $lines
 )
 else
 

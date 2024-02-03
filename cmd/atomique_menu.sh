@@ -58,7 +58,6 @@ clear
 lines=$(tput lines)
 ((lines -= 2))
 
-
 selected_menu=$(
   cat "$SCRIPT_DIR/texts/atomique_menu_entries.txt" | \
 	  fzy -i -l $lines

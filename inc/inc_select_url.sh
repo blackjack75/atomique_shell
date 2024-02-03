@@ -28,9 +28,14 @@ SERVERS_PATH=~/atomique/data/reader
 
 ## Check if FZF_CMD is equal to fzy
 if [ "$FZF_CMD" == "fzy" ]; then
+
+clear
+lines=$(tput lines)
+((lines -= 2))
+
 url=$(
   cat $SERVERS_PATH/*.txt | \
-	  fzy -i
+	  fzy -i -l $lines
 )
 else
 

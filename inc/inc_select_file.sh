@@ -30,8 +30,12 @@ export title
 ## Check if FZF_CMD is equal to fzy
 if [ "$FZF_CMD" == "fzy" ]; then
 selected_file=$(
+clear
+lines=$(tput lines)
+((lines -= 2))
+
   find $FOLDER -type f -name "$FILTER" \
-	  fzy -i
+	  fzy -i -l $lines
 )
 else
 
