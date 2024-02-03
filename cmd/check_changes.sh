@@ -12,6 +12,18 @@ clear
 
 DIR=~/atomique/data
 
+#Show a fortune for 5 sec before launching before checking git
+clear
+
+# Get a random short fortune
+fort=$(fortune -s -n 160)
+dt=$(date +'%H:%M')
+echo "   $dt"
+echo -e "\e[37m💡 $fort\e[0m"
+sleep 10 
+
+
+
 echo Checking $DIR
 cd $DIR
 

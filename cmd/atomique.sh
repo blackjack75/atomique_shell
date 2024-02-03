@@ -8,4 +8,4 @@ else
     tmux new-window -n "atomique-menu" "$SHELL --login -i -c 'aamenu'"
 fi
 
-return 0
+exit 0
