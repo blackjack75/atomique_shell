@@ -10,11 +10,11 @@ sudo apt install most pandoc tidy fzf ripgrep bat gping fortune
 
 elif [ "$unamestr" = 'FreeBSD' ]; then
            platform='freebsd'
-sudo pkg install most pandoc tidy fzf ripgrep bat pipx gping
+sudo pkg install most pandoc tidy fzf ripgrep bat pipx gping fortune
 
    elif [ "$unamestr" = 'Haiku' ]; then
 	      platform='haiku'
-pkgman install pandoc most pandoc tidy fzy ripgrep bat gping
+pkgman install pandoc most pandoc tidy fzy ripgrep bat gping fortune
 
    else	
 
