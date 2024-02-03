@@ -32,4 +32,10 @@ fi
 $pipcmd install toot
 $pipcmd install beautifulsoup4
 
+echo
+echo "---------"
+echo "mdcat requires building with cargo doesn't work on Haiku yet"
+echo "press enter to try"
+read UserInput
+
 cargo install mdcat
