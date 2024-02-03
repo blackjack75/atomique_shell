@@ -53,9 +53,15 @@ echo $TOPLINE
 # FZY IS for Haiku or all plaforms without a recent Golang to get fzf
 #--------------------------------------------------------------------
 if [ "$FZF_CMD" == "fzy" ]; then
+
+clear
+lines=$(tput lines)
+((lines -= 2))
+
+
 selected_menu=$(
   cat "$SCRIPT_DIR/texts/atomique_menu_entries.txt" | \
-	  fzy -i 
+	  fzy -i -l $lines
 )
 else
 
