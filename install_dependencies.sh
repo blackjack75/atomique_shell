@@ -14,7 +14,11 @@ sudo pkg install most pandoc tidy fzf ripgrep bat pipx gping fortune
 
    elif [ "$unamestr" = 'Haiku' ]; then
 	      platform='haiku'
-pkgman install pandoc most pandoc tidy fzy ripgrep bat gping fortune
+pkgman install most pandoc tidy fzy ripgrep bat gping fortune
+
+   elif [ "$unamestr" = 'Darwin' ]; then
+	      platform='mac'
+brew install most pandoc tidy-html5 fzf ripgrep bat gping fortune
 
    else	
 
