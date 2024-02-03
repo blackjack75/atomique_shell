@@ -24,6 +24,29 @@ echo "Getting the 20 most recent bookmarks..."
 #max width is important otherwise we get newline in URLs
 urls=$(export COLUMNS=4096 && toot --no-color --max-width 4096 bookmarks -c 20 -1 | grep -E --color=never 'https?://[^\s<>"]+')
 
+#I use a temp file because dor some reason it wouldnt work
+#inside a variable
+out="/tmp/atomique_tmp_urls.txt"
+rm $out
+touch $out
+
+# Loop over lines in the variable
+echo "$urls" | while IFS= read -r line; do
+    # Split the line at each space
+    read -ra words <<< "$line"
+    # Iterate over the words
+    for word in "${words[@]}"; do
+        # Check if the word starts with http
+        if [[ $word == http* ]]; then    
+            # Append the URL to the new variable
+	    #echo adding "$word"
+            echo "$word"$'\n' >> $out
+        fi
+    done
+done
+
+urls=$(cat $out)
+
 
 # Define the filename
 filename="$READERDIR/tootmarks.txt"
