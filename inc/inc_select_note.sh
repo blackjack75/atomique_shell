@@ -30,9 +30,14 @@ DIR=~/atomique/data/notes/
 
 ## Check if FZF_CMD is equal to fzy
 if [ "$FZF_CMD" == "fzy" ]; then
+
+clear
+lines=$(tput lines)
+((lines -= 2))
+
 selected_file=$(
-echo "NO WAY THIS CAN WORK eith onlz fzy"
-fzy -i
+echo "NO WAY THIS CAN WORK with fzy"
+fzy -i -l $lines
 )
 else
 
