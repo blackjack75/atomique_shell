@@ -39,6 +39,8 @@ export TERM=screen-256color
 echo $SEPLINE
 if [ "$server_host_and_user" = "" ]; then
 	echo "No server selected. You picked an empty line I guess :-)"
+	#kill status pane
+	tmux kill-pane -t 1
 else
 
 if [[ $(echo "$server_keywords" | grep -i "macintosh") ]]; 
