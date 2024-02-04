@@ -6,6 +6,8 @@ then
         export SCRIPT_DIR="$(dirname "$(readlink -f "$0")")/../"
 fi
 
+tmux rename-window "atomique-about"
+
 SLEEPSPEED=0.03
 
 function teletype {
