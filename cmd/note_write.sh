@@ -25,7 +25,7 @@ done
 
 nfile="$folder/$prefix$i.md"
 
-echo "will open in editor: [ $EDITOR ] file $nfile"
+#echo "will open in editor: [ $EDITOR ] file $nfile"
 $EDITOR "$nfile"
 
 # Set tmux window name to default (empty string)
