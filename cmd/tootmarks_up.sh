@@ -80,3 +80,5 @@ echo $SEPLINE
 echo 10 latest URLS
 echo $SEPLINE
 head -n 10 $filename 
+
+read -n 1

@@ -16,4 +16,4 @@ source "$SCRIPT_DIR/inc/inc_select_server.sh"
 echo "Will force sleep this Windows Machine via OpenSSH ..."; 
 
 ssh -p $server_port $server_host_and_user "shutdown /s /f /t 0"
-
+read -n 1

@@ -67,3 +67,5 @@ else
 fi
 
 img2txt  -W $ww -H $hh -f ansi $cached_file          
+read -n 1
+

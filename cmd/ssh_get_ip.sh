@@ -16,4 +16,4 @@ source "$SCRIPT_DIR/inc/inc_select_server.sh"
 export COPYME=$server_host
 source "$SCRIPT_DIR/inc/inc_copy_clipboard.sh"
 
-
+read -n 1

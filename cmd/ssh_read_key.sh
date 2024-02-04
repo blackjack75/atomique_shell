@@ -19,3 +19,4 @@ source "$SCRIPT_DIR/inc/inc_select_file.sh"
 export COPYME=$(cat $selected_file)
 source "$SCRIPT_DIR/inc/inc_copy_clipboard.sh"
 
+read -n 1       

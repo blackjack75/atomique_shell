@@ -26,3 +26,6 @@ file="$SCRIPT_DIR/texts/atomique_about_text.txt"
 body=$(<"$file")
 teletype "$body"
 
+read -n 1
+
+
