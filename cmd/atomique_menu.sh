@@ -84,6 +84,7 @@ source "$SCRIPT_DIR/inc/inc_parse_line_menu.sh"
 
 clear
 if [ "$menu_command" = "kill" ]; then
+    tmux rename-window "atomique-exited"
     echo "It was good knowing you."
 	exit 1
 else
@@ -92,27 +93,28 @@ else
 echo $SEPLINE
 if [ "$menu_command" = "" ]; then
 	echo "No command. You picked an empty line I guess :-)"
+
 else
 	echo " Running $menu_title - command: [ $menu_command ]"
         echo $SEPLINE
 	echo
-if [[ $menu_command == *.sh ]]; then
-    "$SCRIPT_DIR/cmd/$menu_command"
- else                                                                 
+   if [[ $menu_command == *.sh ]]; then
+      "$SCRIPT_DIR/cmd/$menu_command"
+   else                                                                 
 	 echo "Direct command path: $path"
 	 "$menu_command"
- fi     
-fi
+   fi     
 
         echo 
 	echo $SEPLINE
 	echo " Command ended. Press any key to go back to atomique menu..."
         echo $SEPLINE
 	read -n 1 -s
-
-	"$SCRIPT_DIR/cmd/atomique_menu.sh"
-
 fi
 
 
-tmux rename-window "atomique-exited"
+
+fi
+
+"$SCRIPT_DIR/cmd/atomique_menu.sh"
+
