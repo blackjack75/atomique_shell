@@ -81,12 +81,13 @@ tmux kill-pane -t 1
 
 export selected_menu
 source "$SCRIPT_DIR/inc/inc_parse_line_menu.sh"
-
+date +%s > /tmp/atomique_time_test
 
 clear
 if [ "$menu_command" = "kill" ]; then
     tmux rename-window "atomique-exited"
     clear
+    rm /tmp/atomique_time_test
     echo "It was good knowing you."
     exit 1
 elif [ "$menu_command" = "" ]; then

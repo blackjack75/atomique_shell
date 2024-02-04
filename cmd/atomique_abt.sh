@@ -20,7 +20,7 @@ function teletype {
     done
 }
 
-cat "$SCRIPT_DIR/texts/atomique_about_header.txt"
+cat "$SCRIPT_DIR/texts/atomique_about_header.txt" | echo -e "\e[93m$(cat)\e[0m"
 
 file="$SCRIPT_DIR/texts/atomique_about_text.txt"
 body=$(<"$file")

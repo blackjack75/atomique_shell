@@ -15,12 +15,21 @@ DIR=~/atomique/data
 #Show a fortune for 5 sec before launching before checking git
 clear
 
+timestamp=$(cat /tmp/atomique_time_test)
+current_time=$(date +%s)
+difference=$((current_time - timestamp))
+
+#if last command was more than a minute ago
+#allow showing a fortune first
+if [ $difference -gt 60 ]; then
 # Get a random short fortune
 fort=$(fortune -s -n 160)
 dt=$(date +'%H:%M')
 echo "   $dt"
 echo -e "\e[37m💡 $fort\e[0m"
 sleep 10 
+fi
+
 
 
 
