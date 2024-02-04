@@ -7,7 +7,7 @@ if [ -z "$SCRIPT_DIR" ]
 then
         export SCRIPT_DIR="$(dirname "$(readlink -f "$0")")/../"
 fi
-
+tmux rename-window "atomique-ssh-get-ip"
 
 title="Pick a server to print IP and copy to clipboard "
 

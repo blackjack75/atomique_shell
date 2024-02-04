@@ -8,6 +8,7 @@ if [ -z "$var" ]
 then
 	export SCRIPT_DIR="$(dirname "$(readlink -f "$0")")/../"
 fi
+tmux rename-window "atomique-reader-list"
 
 source "$SCRIPT_DIR/inc/inc_decoration.sh"
 

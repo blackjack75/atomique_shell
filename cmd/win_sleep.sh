@@ -7,6 +7,8 @@ then
         export SCRIPT_DIR="$(dirname "$(readlink -f "$0")")/../"
 fi
 
+tmux rename-window "atomique-ssh-winsleep"
+
 title="Select Windows Server to put to sleep"
 
 source "$SCRIPT_DIR/inc/inc_select_server.sh"

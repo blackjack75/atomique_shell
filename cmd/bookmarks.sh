@@ -4,5 +4,5 @@ if [ -z "$SCRIPT_DIR" ]
 then
         export SCRIPT_DIR="$(dirname "$(readlink -f "$0")")/../"
 fi
-
+tmux rename-window "atomique-bookmarks"
 echo "WELL this is simply not done yet but I am thinking about it"

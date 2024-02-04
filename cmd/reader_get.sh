@@ -9,7 +9,7 @@ fi
 
 
 clear
-tmux rename-window "atomique-reader"
+tmux rename-window "atomique-reader-get"
 
 
 

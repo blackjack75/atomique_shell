@@ -10,12 +10,13 @@ fi
 title="Select Note to Edit"
 
 
+# Rename the window
+tmux rename-window "atomique-note-search"
+
 source "$SCRIPT_DIR/inc/inc_decoration.sh"
 source "$SCRIPT_DIR/inc/inc_select_note.sh"
 
 
-# Rename the window
-tmux rename-window "Note-search"
 
 if [ -n "$selected_file" ]; then
 vim  $selected_file
