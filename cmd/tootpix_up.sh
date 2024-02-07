@@ -103,10 +103,14 @@ while IFS= read -r url; do
     md5_hashes+=("$md5_hash.jpg")
 done < $filename
 
-# Loop through each MD5 hash and display the corresponding image using timg
+# Construct the array of image paths
+image_paths=()
 for hash in "${md5_hashes[@]}"; do
-    timg "$CACHEDIR/$hash" 
+    image_paths+=("$CACHEDIR/$hash")
 done
+
+# Display all images using timg
+timg -w 1.5 --clear=every "${image_paths[@]}" 
 
 echo Press any key
 read -n 1
