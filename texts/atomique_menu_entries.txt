@@ -5,7 +5,7 @@ About            | atomique_abt.sh | Info about this
 Update self      | update_code.sh  | Git pull atomique commands
 Sync data        | update_data.sh  | Git push & pull data 
 Windows Sleeper  | win_sleep.sh    | Sleep a Windows Server 
-Shell GPT        | gpt.sh          | Chat with a dumb bot
+AI GPT           | gpt.sh          | Chat with dumb AI (elia/sgpt)
 Bookmarks        | bookmarks.sh    | Pick bookmarks
 Note Write       | note_write.sh   | Create New Note 
 Note Search      | note_search.sh  | Notes Find and Edit 

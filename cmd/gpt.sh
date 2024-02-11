@@ -6,7 +6,15 @@ if [ -z "$ATOMIQUE_ROOT_DIR" ]
 then
         export ATOMIQUE_ROOT_DIR="$(dirname "$(readlink -f "$0")")/../"
 fi
-tmux rename-window "atomique-shell-gpt"
+
+
+tmux rename-window "atomique-gpt"
+echo "Type 's' for shell-gpt or any other key for Elia:"
+read -r choice
+
+if [ "$choice" = "s" ]; then
+    echo "You chose sgpt"
+
 clear
 echo $SEPLINE
 echo "Enter Conversation name or ENTER to pick existing: " 
@@ -35,3 +43,8 @@ echo $SEPLINE
 echo "Shell-GPT Conversation:: $filename"
 echo $SEPLINE
 sgpt --repl --chat "$filename"
+
+else
+    echo "You chose Elia"
+elia
+fi
