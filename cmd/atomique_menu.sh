@@ -76,43 +76,51 @@ selected_menu=$(
 )
 fi
 
+#kill status pane
+tmux kill-pane -t 1
+
 export selected_menu
 source "$SCRIPT_DIR/inc/inc_parse_line_menu.sh"
-
-        #kill status pane
-        tmux kill-pane -t 1
+date +%s > /tmp/atomique_time_test
 
 clear
 if [ "$menu_command" = "kill" ]; then
+    tmux rename-window "atomique-exited"
+    clear
+    rm /tmp/atomique_time_test
     echo "It was good knowing you."
-	exit 1
-else
+    exit 1
+elif [ "$menu_command" = "" ]; then
 
-
-echo $SEPLINE
-if [ "$menu_command" = "" ]; then
 	echo "No command. You picked an empty line I guess :-)"
-else
-	echo " Running $menu_title - command: [ $menu_command ]"
-        echo $SEPLINE
-	echo
-if [[ $menu_command == *.sh ]]; then
-    "$SCRIPT_DIR/cmd/$menu_command"
- else                                                                 
-	 echo "Direct command path: $path"
-	 "$menu_command"
- fi     
-fi
 
+else
+
+start=$(date +%s.%N)
+   
+  if [[ $menu_command == *.sh ]]; then
+     "$SCRIPT_DIR/cmd/$menu_command"
+  else                                                                 
+     "$menu_command"
+  fi     
+
+end=$(date +%s.%N)
+duration=$(echo "$end - $start" | bc)
+
+# Check if the duration is less than 2 seconds and print "hey" if so
+minsec=2
+
+  if (( $(echo "$duration < $minsec" | bc -l) )); then
+        echo $SEPLINE
+	echo " Ended $menu_title - command: [ $menu_command ]"
+        echo $SEPLINE
         echo 
-	echo $SEPLINE
-	echo " Command ended. Press any key to go back to atomique menu..."
+	echo " Command ended in under $minsec seconds."
+        echo " Press any key to go back to atomique menu..."
         echo $SEPLINE
 	read -n 1 -s
-
-	"$SCRIPT_DIR/cmd/atomique_menu.sh"
-
+  fi
 fi
 
+"$SCRIPT_DIR/cmd/atomique_menu.sh"
 
-tmux rename-window "atomique-exited"

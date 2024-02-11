@@ -7,7 +7,7 @@ if [ -z "$SCRIPT_DIR" ]
 then
         export SCRIPT_DIR="$(dirname "$(readlink -f "$0")")/../"
 fi
-
+tmux rename-window "atomique-self-update"
 
 echo "Updating code (git pull in $SCRIPT_DIR) "
 cd $SCRIPT_DIR

@@ -66,4 +66,8 @@ else
     hh=$maxlines
 fi
 
-img2txt  -W $ww -H $hh -f ansi $cached_file          
+timg $cached_file
+
+#img2txt  -W $ww -H $hh -f ansi $cached_file          
+read -n 1
+

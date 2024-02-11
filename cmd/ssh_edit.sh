@@ -8,6 +8,7 @@ then
         export SCRIPT_DIR="$(dirname "$(readlink -f "$0")")/../"
 fi
 
+tmux rename-window "atomique-ssh-edit-servers"
 
 datafolder=~/atomique/data
 servers_folder=~/atomique/data/servers

@@ -10,6 +10,7 @@ then
         export SCRIPT_DIR="$(dirname "$(readlink -f "$0")")/../"
 fi
 
+tmux rename-window "atomique-ping-server"
 
 source "$SCRIPT_DIR/inc/inc_select_server.sh"
 
@@ -19,9 +20,13 @@ echo "Server is $server_host"
 # so it sends another control c to first pane then exits
 
 
-tmux split-window -v -p 70
-tmux split-window -v -l 2
-tmux send-keys -t 1 "gping $server_host && exit 0" C-m
-tmux send-keys -t 2 "export message=\"PING $server_name ($server_host)\" && source \"$SCRIPT_DIR/inc/inc_message_and_wait.sh\" && tmux send-keys -t 0 C-c C-c && tmux send-keys -t 1 C-c && exit" C-m
+tmux split-window -v -p 70  "gping $server_host && exit 0"
+tmux split-window -v -l 2  "export message=\"PING $server_name ($server_host)\" && source \"$SCRIPT_DIR/inc/inc_message_and_wait.sh\" && tmux send-keys -t 0 C-c C-c && tmux send-keys -t 1 C-c && exit" 
+
+
+#tmux send-keys -t 1 "gping $server_host && exit 0" C-m
+#tmux send-keys -t 2 "export message=\"PING $server_name ($server_host)\" && source \"$SCRIPT_DIR/inc/inc_message_and_wait.sh\" && tmux send-keys -t 0 C-c C-c && tmux send-keys -t 1 C-c && exit" C-m
+
+
 
 ping $server_host  && exit 0

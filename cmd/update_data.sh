@@ -1,6 +1,7 @@
 #!/usr/bin/env bash   
 
 
+#
 # If script was included from main menu the dir is already defined
 # otherwise point to parent of 'cmd' dir
 if [ -z "$SCRIPT_DIR" ]
@@ -16,3 +17,5 @@ git pull
 git add .
 git commit -a -m "full sync from atomique menu"
 git push
+
+read -n 1

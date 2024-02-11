@@ -10,11 +10,15 @@ sudo apt install most pandoc tidy fzf ripgrep bat gping fortune
 
 elif [ "$unamestr" = 'FreeBSD' ]; then
            platform='freebsd'
-sudo pkg install most pandoc tidy fzf ripgrep bat pipx gping
+sudo pkg install most pandoc tidy fzf ripgrep bat pipx gping fortune
 
    elif [ "$unamestr" = 'Haiku' ]; then
 	      platform='haiku'
-pkgman install pandoc most pandoc tidy fzy ripgrep bat gping
+pkgman install most pandoc tidy fzy ripgrep bat gping fortune
+
+   elif [ "$unamestr" = 'Darwin' ]; then
+	      platform='mac'
+brew install most pandoc tidy-html5 fzf ripgrep bat gping fortune
 
    else	
 
@@ -30,6 +34,7 @@ pipcmd=pip
 fi
 
 $pipcmd install toot
+$pipcmd install toolong 
 $pipcmd install beautifulsoup4
 $pipcmd install shell-gpt 
 

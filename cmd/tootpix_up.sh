@@ -7,9 +7,9 @@ then
         export SCRIPT_DIR="$(dirname "$(readlink -f "$0")")/../"
 fi
 
-tmux rename-window "atomique-tootmarks"
-READERDIR=~/atomique/data/reader
-mkdir -p $READERDIR
+tmux rename-window "atomique-tootpix"
+IMGDIR=~/atomique/data/img
+mkdir -p $IMGDIR
 
 echo "Checking auth to valid mastodon acount..."
 
@@ -22,11 +22,11 @@ fi
 echo "Getting the 20 most recent bookmarks..."
 #Use toot to extract URLs
 #max width is important otherwise we get newline in URLs
-urls=$(export COLUMNS=4096 && toot --no-color --max-width 4096 bookmarks -c 20 -1 | grep -E --color=never 'https?://[^\s<>"]+')
+urls=$(export COLUMNS=4096 && toot --no-color --max-width 4096 timeline -t '#caturday' -c 20 -1 | grep -E --color=never 'https?://[^\s<>"]+')
 
 #I use a temp file because dor some reason it wouldnt work
 #inside a variable
-out="/tmp/atomique_tmp_urls.txt"
+out="/tmp/atomique_img_urls.txt"
 rm $out
 touch $out
 
@@ -49,8 +49,8 @@ urls=$(cat $out)
 
 
 # Define the filename
-filename="$READERDIR/tootmarks.txt"
-temp_file="/tmp/tootmarks_temp"
+filename="$IMGDIR/tootpix.txt"
+temp_file="/tmp/tootpix_temp"
 
 # Ensure the file exists or create it if it doesn't
 touch "$filename"
@@ -58,11 +58,13 @@ touch "$filename"
 # Count lines in the existing file
 before=$(wc -l < "$filename")
 
-# Filter out URLs containing "media_attachments/files"
-filtered_urls=$(echo "$urls" | grep -v "media_attachments/files")
+# KEEP t URLs containing "media_attachments/files"
+# #only jpeg
+urls=$(echo "$urls" | grep "media_attachments/files")
+urls=$(echo "$urls" | grep ".jp")
 
 # Append new URLs to the temporary file, avoiding duplicates
-echo "$filtered_urls" | awk '!seen[$0]++' > "$temp_file"
+echo "$urls" | awk '!seen[$0]++' > "$temp_file"
 nburls=$(wc -l < "$temp_file")
 
 # Concatenate the temporary file with the existing file
@@ -81,4 +83,34 @@ echo 10 latest URLS
 echo $SEPLINE
 head -n 10 $filename 
 
+
+CACHEDIR=/tmp/atomique/cached_pix
+mkdir -p $CACHEDIR
+
+# Declare an array to store MD5 hashes
+md5_hashes=()
+
+
+# Loop through each URL in sources.txt
+while IFS= read -r url; do
+    md5_hash=$(echo -n "$url" | md5sum | awk '{print $1}')
+    if [ -f "$CACHEDIR/$md5_hash.jpg" ]; then
+        echo "Image already cached: $url"
+    else
+        curl -sS "$url" -o "$CACHEDIR/$md5_hash.jpg"
+        echo "Downloaded: $url"
+    fi
+    md5_hashes+=("$md5_hash.jpg")
+done < $filename
+
+# Construct the array of image paths
+image_paths=()
+for hash in "${md5_hashes[@]}"; do
+    image_paths+=("$CACHEDIR/$hash")
+done
+
+# Display all images using timg
+timg -w 1.5 --clear=every "${image_paths[@]}" 
+
+echo Press any key
 read -n 1
