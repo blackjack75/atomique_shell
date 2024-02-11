@@ -6,11 +6,11 @@ title="Select Server to connect to"
 # otherwise point to parent of 'cmd' dir
 if [ -z "$var" ]
 then
-	export SCRIPT_DIR="$(dirname "$(readlink -f "$0")")/../"
+	export ATOMIQUE_ROOT_DIR="$(dirname "$(readlink -f "$0")")/../"
 fi
 
-source "$SCRIPT_DIR/inc/inc_decoration.sh"
-source "$SCRIPT_DIR/inc/inc_select_server.sh"
+source "$ATOMIQUE_ROOT_DIR/inc/inc_decoration.sh"
+source "$ATOMIQUE_ROOT_DIR/inc/inc_select_server.sh"
 
 # Rename the window
 clean_name=$(echo "$server_name" | tr -cd '[:alnum:]_.-' | tr -s '_')-ssh
@@ -26,7 +26,7 @@ remoteName="fromSSH-$nbwin"
 
 #Create STATUS pane
 statusInfo="$server_name $server_host_and_user : $server_port"
-tmux split-window -l 2 -v -c '#{pane_current_path}' "$SCRIPT_DIR/inc/inc_status_ssh.sh \"$statusInfo\" " \; select-pane -t:.0
+tmux split-window -l 2 -v -c '#{pane_current_path}' "$ATOMIQUE_ROOT_DIR/inc/inc_status_ssh.sh \"$statusInfo\" " \; select-pane -t:.0
 
 cmd="tmux new-session -A -s \"$remoteName\""
 cmdMac="source ~/.zshrc;tmux new-session -A -s \"$remoteName\""
@@ -71,6 +71,6 @@ fi
         echo $SEPLINE
 	read -n 1 -s
 
-	"$SCRIPT_DIR/cmd/ssh_connect.sh"
+	"$ATOMIQUE_ROOT_DIR/cmd/ssh_connect.sh"
 
 fi

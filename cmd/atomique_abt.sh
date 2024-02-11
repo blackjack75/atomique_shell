@@ -1,9 +1,9 @@
 
 # If script was included from main menu the dir is already defined
 # otherwise point to parent of 'cmd' dir
-if [ -z "$SCRIPT_DIR" ]
+if [ -z "$ATOMIQUE_ROOT_DIR" ]
 then
-        export SCRIPT_DIR="$(dirname "$(readlink -f "$0")")/../"
+        export ATOMIQUE_ROOT_DIR="$(dirname "$(readlink -f "$0")")/../"
 fi
 
 tmux rename-window "atomique-about"
@@ -20,9 +20,9 @@ function teletype {
     done
 }
 
-cat "$SCRIPT_DIR/texts/atomique_about_header.txt" | echo -e "\e[93m$(cat)\e[0m"
+cat "$ATOMIQUE_ROOT_DIR/texts/atomique_about_header.txt" | echo -e "\e[93m$(cat)\e[0m"
 
-file="$SCRIPT_DIR/texts/atomique_about_text.txt"
+file="$ATOMIQUE_ROOT_DIR/texts/atomique_about_text.txt"
 body=$(<"$file")
 teletype "$body"
 

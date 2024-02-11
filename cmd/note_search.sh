@@ -2,9 +2,9 @@
 
 # If script was included from main menu the dir is already defined
 # otherwise point to parent of 'cmd' dir
-if [ -z "$SCRIPT_DIR" ]
+if [ -z "$ATOMIQUE_ROOT_DIR" ]
 then
-        export SCRIPT_DIR="$(dirname "$(readlink -f "$0")")/../"
+        export ATOMIQUE_ROOT_DIR="$(dirname "$(readlink -f "$0")")/../"
 fi
 
 title="Select Note to Edit"
@@ -13,8 +13,8 @@ title="Select Note to Edit"
 # Rename the window
 tmux rename-window "atomique-note-search"
 
-source "$SCRIPT_DIR/inc/inc_decoration.sh"
-source "$SCRIPT_DIR/inc/inc_select_note.sh"
+source "$ATOMIQUE_ROOT_DIR/inc/inc_decoration.sh"
+source "$ATOMIQUE_ROOT_DIR/inc/inc_select_note.sh"
 
 
 

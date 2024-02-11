@@ -2,9 +2,9 @@
  
 # If script was included from main menu the dir is already defined
 # otherwise point to parent of 'cmd' dir
-if [ -z "$SCRIPT_DIR" ]
+if [ -z "$ATOMIQUE_ROOT_DIR" ]
 then
-        export SCRIPT_DIR="$(dirname "$(readlink -f "$0")")/../"
+        export ATOMIQUE_ROOT_DIR="$(dirname "$(readlink -f "$0")")/../"
 fi
 
 
@@ -51,7 +51,7 @@ fi
 
 echo "Cleaning up..."
 
-tidy_content=$($SCRIPT_DIR/py/fixhtml_droptags.py $cached_file )
+tidy_content=$($ATOMIQUE_ROOT_DIR/py/fixhtml_droptags.py $cached_file )
 
 #tidy_content=$(tidy --force-output yes --drop-empty-elements yes  <<< "$html_content" )
 

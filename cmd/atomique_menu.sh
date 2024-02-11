@@ -2,12 +2,12 @@
 
 # If script was included from main menu the dir is already defined
 # otherwise point to parent of 'cmd' dir
-if [ -z "$SCRIPT_DIR" ]
+if [ -z "$ATOMIQUE_ROOT_DIR" ]
 then
-        export SCRIPT_DIR="$(dirname "$(readlink -f "$0")")/../"
+        export ATOMIQUE_ROOT_DIR="$(dirname "$(readlink -f "$0")")/../"
 fi
 
-source "$SCRIPT_DIR/inc/inc_decoration.sh"
+source "$ATOMIQUE_ROOT_DIR/inc/inc_decoration.sh"
 
 tmux rename-window "atomique-menu"
 
@@ -36,7 +36,7 @@ tmux list-panes -F '#{pane_current_command}' | grep -q "check_changes.sh"
 
 # If the pane does not exist, create it
 if [ $? -ne 0 ]; then
-    tmux split-window -l 4 -v -c '#{pane_current_path}' "$SCRIPT_DIR/cmd/check_changes.sh" \; select-pane -t:.0
+    tmux split-window -l 4 -v -c '#{pane_current_path}' "$ATOMIQUE_ROOT_DIR/cmd/check_changes.sh" \; select-pane -t:.0
 fi
 
 
@@ -59,7 +59,7 @@ lines=$(tput lines)
 ((lines -= 2))
 
 selected_menu=$(
-  cat "$SCRIPT_DIR/texts/atomique_menu_entries.txt" | \
+  cat "$ATOMIQUE_ROOT_DIR/texts/atomique_menu_entries.txt" | \
 	  fzy -i -l $lines
 )
 else
@@ -69,9 +69,9 @@ else
 #--------------------------------------------------------------------
 selected_menu=$(
 
-  cat "$SCRIPT_DIR/texts/atomique_menu_entries.txt" | \
+  cat "$ATOMIQUE_ROOT_DIR/texts/atomique_menu_entries.txt" | \
 	  fzf --delimiter='|'  \
-	  --preview='echo {} | "$SCRIPT_DIR/inc/inc_preview_menu.sh" ' \
+	  --preview='echo {} | "$ATOMIQUE_ROOT_DIR/inc/inc_preview_menu.sh" ' \
 	  --preview-window=up:6:wrap --exact 
 )
 fi
@@ -80,7 +80,7 @@ fi
 tmux kill-pane -t 1
 
 export selected_menu
-source "$SCRIPT_DIR/inc/inc_parse_line_menu.sh"
+source "$ATOMIQUE_ROOT_DIR/inc/inc_parse_line_menu.sh"
 date +%s > /tmp/atomique_time_test
 
 clear
@@ -99,7 +99,7 @@ else
 start=$(date +%s.%N)
    
   if [[ $menu_command == *.sh ]]; then
-     "$SCRIPT_DIR/cmd/$menu_command"
+     "$ATOMIQUE_ROOT_DIR/cmd/$menu_command"
   else                                                                 
      "$menu_command"
   fi     
@@ -122,5 +122,5 @@ minsec=2
   fi
 fi
 
-"$SCRIPT_DIR/cmd/atomique_menu.sh"
+"$ATOMIQUE_ROOT_DIR/cmd/atomique_menu.sh"
 
