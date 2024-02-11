@@ -34,6 +34,9 @@ url_md5=$(echo -n "$url" | md5sum | awk '{print $1}')
 
 cached_file="$cache_folder/$url_md5.html"
 clean_file="$cache_folder/$url_md5_clean.html"
+
+if [ ! -f "$cached_file.md" ]; then
+
 if [ ! -f "$cached_file" ]; then
     echo "Getting page: $url"
 
@@ -82,8 +85,14 @@ tidy_content=$($ATOMIQUE_ROOT_DIR/py/fixhtml_droptags.py $cached_file )
     echo "Useless crap removed: $reduced %"
     echo $SEPLINE
 
-    echo "DEBUG press enter"
-    read userInput
+    echo "DEBUG pausing 2 sec"
+    sleep 2
+    #read userInput
+else
+    echo "Using existing cleaned up .md cache"
+fi
+
+
     #echo "$markdown_content" | most -wD
     #echo "$markdown_content" | mdcat -p 
     frogmouth "$cached_file.md"

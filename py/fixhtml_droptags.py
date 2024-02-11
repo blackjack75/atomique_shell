@@ -19,7 +19,7 @@ def fix_html(file_name):
 
     # Define tags to drop
     #tags_to_drop = [ 'meta', 'link',  'a', 'img', 'svg', 'script']
-    tags_to_drop = [ 'meta', 'link', 'svg', 'script' ,'button','link','ul']
+    tags_to_drop = [ 'meta', 'link', 'svg', 'script' ,'button','link']
 
     # Drop specified tags
     for tag in soup.find_all(tags_to_drop):
@@ -39,9 +39,9 @@ def fix_html(file_name):
 
       if real_paragraph is None:
         text = paragraph.get_text(strip=True)
-        scanlen = len(text) -39 
+        scanlen = len(text) -159
         for i in range(scanlen):  
-          if all(c != '<' for c in text[i:i+40]): 
+          if all(c != '<' for c in text[i:i+160]): 
              real_paragraph = paragraph
              break
           else:
