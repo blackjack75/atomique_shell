@@ -31,6 +31,7 @@ fi
 
 $pipcmd install toot
 $pipcmd install beautifulsoup4
+$pipcmd install shell-gpt 
 
 echo
 echo "---------"
