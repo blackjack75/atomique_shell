@@ -14,11 +14,10 @@ if tmux list-windows | grep -q "atomique-gpt"; then
     tmux rename-window "atomique-menu"
     
     tmux select-window -t "atomique-gpt"
-    echo "will auto close in 3 sec"
-    sleep 3
+    exit 0
+
 else
 
-	
 	
 tmux rename-window "atomique-gpt"
 echo "Type 's' for shell-gpt or any other key for Elia:"
