@@ -10,10 +10,16 @@ def fix_html(file_name):
 
     # Parse the HTML
     soup = BeautifulSoup(html_content, 'html.parser')
+    
+    title_tag = soup.find('title')
+    if title_tag:
+       title_content = title_tag.get_text().strip()
+    if not title_content:
+       title_content = "No title tag found"
 
     # Define tags to drop
     #tags_to_drop = [ 'meta', 'link',  'a', 'img', 'svg', 'script']
-    tags_to_drop = [ 'meta', 'link', 'svg', 'script']
+    tags_to_drop = [ 'meta', 'link', 'svg', 'script' ,'button','link','ul']
 
     # Drop specified tags
     for tag in soup.find_all(tags_to_drop):
@@ -24,16 +30,30 @@ def fix_html(file_name):
 
     # Find the first paragraph with at least ~ 2 lines 
     real_paragraph = None
-    #for paragraph in soup.find_all(['div', 'p', 'span']):
+    #for paragraph in soup.find_all():
+     #  if len(paragraph.get_text(strip=True))>= 160:
+      #      real_paragraph = paragraph
+       #     break
+
     for paragraph in soup.find_all():
-       if len(paragraph.get_text(strip=True))>= 160:
-            real_paragraph = paragraph
-            break
+
+      if real_paragraph is None:
+        text = paragraph.get_text(strip=True)
+        scanlen = len(text) -39 
+        for i in range(scanlen):  
+          if all(c != '<' for c in text[i:i+40]): 
+             real_paragraph = paragraph
+             break
+          else:
+             continue
+          break
+      else:
+          break
 
     # If a real paragraph is found, remove all links before it
     if real_paragraph:
         h1_tag = soup.new_tag('h1')
-        h1_tag.string = '* FIRST REAL PARAGRAPH *'
+        h1_tag.string = title_content.upper()
         real_paragraph.insert(0, h1_tag)
 
         backups = []
@@ -81,7 +101,7 @@ def fix_html(file_name):
     for i, link in enumerate(links, 1):
         try:
           link_text = link.get_text()
-          new_text = f'{link_text} [{i}]'
+          new_text = f'{link_text} <{i}>'
           link.replace_with(new_text)
           link_info.append((f'{i}', link.attrs['href']))
         except:

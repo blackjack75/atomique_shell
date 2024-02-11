@@ -53,8 +53,6 @@ echo "Cleaning up..."
 
 tidy_content=$($ATOMIQUE_ROOT_DIR/py/fixhtml_droptags.py $cached_file )
 
-#tidy_content=$(tidy --force-output yes --drop-empty-elements yes  <<< "$html_content" )
-
 
      echo "Converting to markdown..."
      markdown_content=$(echo "$tidy_content" | pandoc -f html -t markdown_strict+pipe_tables --wrap=none --resource-path=)
