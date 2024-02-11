@@ -87,6 +87,7 @@ tidy_content=$($ATOMIQUE_ROOT_DIR/py/fixhtml_droptags.py $cached_file )
     echo "DEBUG press enter"
     read userInput
     #echo "$markdown_content" | most -wD
-    echo "$markdown_content" | mdcat -p 
+    #echo "$markdown_content" | mdcat -p 
+    frogmouth "$cached_file.md"
 
 
