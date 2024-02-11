@@ -34,6 +34,7 @@ pipcmd=pip
 fi
 
 $pipcmd install toot
+$pipcmd install toolong 
 $pipcmd install beautifulsoup4
 
 echo
