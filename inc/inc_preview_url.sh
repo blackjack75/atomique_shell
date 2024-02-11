@@ -11,7 +11,7 @@ url=$piped_input
 export url
 
 # Define variables
-#source "$SCRIPT_DIR/inc/inc_parse_line_ssh.sh"
+#source "$ATOMIQUE_ROOT_DIR/inc/inc_parse_line_ssh.sh"
 
 echo $SEPLINE
 echo " $title "
