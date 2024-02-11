@@ -42,12 +42,12 @@ selected_server=$(
 
   cat $SERVERS_PATH/*.txt | \
 	  fzf --delimiter='|'  \
-	  --preview='echo {} | "$SCRIPT_DIR/inc/inc_preview_ssh.sh" ' \
+	  --preview='echo {} | "$ATOMIQUE_ROOT_DIR/inc/inc_preview_ssh.sh" ' \
 	  --preview-window=up:6:wrap  
 )
 fi
 
-source "$SCRIPT_DIR/inc/inc_parse_line_ssh.sh"
+source "$ATOMIQUE_ROOT_DIR/inc/inc_parse_line_ssh.sh"
 
 # Print chosen server's name
 clear

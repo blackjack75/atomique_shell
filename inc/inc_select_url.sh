@@ -43,13 +43,13 @@ url=$(
 
   cat $SERVERS_PATH/*.txt | \
 	  fzf --delimiter='|'  \
-	  --preview='echo {} | "$SCRIPT_DIR/inc/inc_preview_url.sh" ' \
+	  --preview='echo {} | "$ATOMIQUE_ROOT_DIR/inc/inc_preview_url.sh" ' \
 	  --preview-window=up:6:wrap  
 )
 fi
 
 
-#source "$SCRIPT_DIR/inc/inc_parse_line_ssh.sh"
+#source "$ATOMIQUE_ROOT_DIR/inc/inc_parse_line_ssh.sh"
 
 clear
 
