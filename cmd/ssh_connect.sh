@@ -17,7 +17,6 @@ clean_name=$(echo "$server_name" | tr -cd '[:alnum:]_.-' | tr -s '_')-ssh
 
 nbwin=$(tmux list-windows | grep -ci "$clean_name")
 
-# We want a different name per session created here
 # they are reused if connecting from another machine
 # but here with a nested tmux i prefer 1 session per window
 tmux rename-window "$clean_name-$nbwin"
@@ -28,9 +27,17 @@ remoteName="fromSSH-$nbwin"
 statusInfo="$server_name $server_host_and_user : $server_port"
 tmux split-window -l 2 -v -c '#{pane_current_path}' "$ATOMIQUE_ROOT_DIR/inc/inc_status_ssh.sh \"$statusInfo\" " \; select-pane -t:.0
 
+
+tmuxpath=tmux
+#Intel Mac, force different path for tmux, otherwise it is not found
+if [[ $(echo "$server_keywords" | grep -i "macintosh" | grep -i "intel") ]]; then
+    tmuxpath=/usr/local/bin/tmux
+fi
+
 cmd="tmux new-session -A -s \"$remoteName\""
-cmdMac="source ~/.zshrc;tmux new-session -A -s \"$remoteName\""
+cmdMac="source ~/.zshrc;$tmuxpath new-session -A -s \"$remoteName\""
 cmdWin=
+
 
 # some servers (such as lema.org fails with tmux-256-colors
 # this works on more platforms
