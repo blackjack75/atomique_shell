@@ -15,6 +15,7 @@ Game Tint        | tint.sh         | Game Not Tetris
 Game Pong        | pong.sh         | Game Pong
 Get Tootmarks    | tootmarks_up.sh | Get URLs Mastodon Bookmarks
 Get TootPix      | tootpix_up.sh   | Get Mastodon Images
+Gemini Browser   | gemini.sh       | Amfora Gemini Protocol 
 Reader           | reader_list.sh  | Pick URLs to read later
 SSH Get Key      | ssh_read_key.sh | Copy a public key to clipboard  
 SSH Get Host     | ssh_get_ip.sh   | Copy server host/IP to clipboard  
