@@ -6,20 +6,19 @@ platform='unknown'
 unamestr=$(uname)
 if [ "$unamestr" = 'Linux' ]; then
 	   platform='linux'
-sudo apt install most pandoc tidy fzf ripgrep bat gping fortune
+sudo apt install most pandoc tidy fzf ripgrep bat gping fortune amfora
 
 elif [ "$unamestr" = 'FreeBSD' ]; then
            platform='freebsd'
-sudo pkg install most pandoc tidy fzf ripgrep bat pipx gping fortune
+sudo pkg install most pandoc tidy fzf ripgrep bat pipx gping fortune amfora
 
    elif [ "$unamestr" = 'Haiku' ]; then
 	      platform='haiku'
-pkgman install most pandoc tidy fzy ripgrep bat gping fortune
+pkgman install most pandoc tidy fzy ripgrep bat gping fortune amfora
 
    elif [ "$unamestr" = 'Darwin' ]; then
 	      platform='mac'
-brew install most pandoc tidy-html5 fzf ripgrep bat gping fortune
-
+brew install most pandoc tidy-html5 fzf ripgrep bat gping fortune amfora
    else	
 
     echo "Unsupported platform: $unamestr. Aborting script."
