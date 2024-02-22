@@ -9,17 +9,20 @@ then
 	export ATOMIQUE_ROOT_DIR="$(dirname "$(readlink -f "$0")")/../"
 fi
 
+#This same name is set in tmux.conf, don't change it but make sure to restore it
+tmux rename-window "atomique-ssh-selector"
+
 source "$ATOMIQUE_ROOT_DIR/inc/inc_decoration.sh"
 source "$ATOMIQUE_ROOT_DIR/inc/inc_select_server.sh"
 
 # Rename the window
-clean_name=$(echo "$server_name" | tr -cd '[:alnum:]_.-' | tr -s '_')-ssh
-
-nbwin=$(tmux list-windows | grep -ci "$clean_name")
-
 # they are reused if connecting from another machine
 # but here with a nested tmux i prefer 1 session per window
+clean_name=$(echo "$server_name" | tr -cd '[:alnum:]_.-' | tr -s '_')-ssh
+nbwin=$(tmux list-windows | grep -ci "$clean_name")
 tmux rename-window "$clean_name-$nbwin"
+
+
 remoteName="fromSSH-$nbwin"
 # Connect to the chosen server using its IP address (second field)
 
@@ -68,8 +71,6 @@ fi
 	# Set tmux window name to default (empty string)
         tmux rename-window "disconnected from ssh"
 
-	#kill status pane
-	tmux kill-pane -t 1
 
         echo 
 	echo $SEPLINE
@@ -77,6 +78,13 @@ fi
 	echo " SSH Command ended. Press any key to go back to atomique SSH menu..."
         echo $SEPLINE
 	read -n 1 -s
+
+	
+        #restore name otherwise it will keep old session name	
+	tmux rename-window "atomique-ssh-selector"
+	
+	#kill status pane
+	tmux kill-pane -t 1
 
 	"$ATOMIQUE_ROOT_DIR/cmd/ssh_connect.sh"
 
