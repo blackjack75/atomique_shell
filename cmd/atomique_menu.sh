@@ -122,5 +122,7 @@ minsec=2
   fi
 fi
 
+tmux rename-window "atomique-menu"
+
 "$ATOMIQUE_ROOT_DIR/cmd/atomique_menu.sh"
 
