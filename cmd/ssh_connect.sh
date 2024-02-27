@@ -1,7 +1,5 @@
 #!/usr/bin/env bash   
 
-title="Select Server to connect to"
-
 # If script was included from main menu the dir is already defined
 # otherwise point to parent of 'cmd' dir
 if [ -z "$var" ]
@@ -9,8 +7,27 @@ then
 	export ATOMIQUE_ROOT_DIR="$(dirname "$(readlink -f "$0")")/../"
 fi
 
+
 #This same name is set in tmux.conf, don't change it but make sure to restore it
-tmux rename-window "atomique-ssh-selector"
+
+WIN_NAME="atomique-ssh-selector"
+
+ACTIVE_WINDOW=$(tmux display-message -p '#W')
+
+#AVOID SHOWING error for fast returning command
+ALLOW_MENU_BACK_NOW=1
+
+#Switch to existing window with atomique menu
+if [ "$ACTIVE_WINDOW" != "$WIN_NAME" ]; then
+   if tmux list-windows -F "#{window_name}" | grep -q "$WIN_NAME"; then
+        tmux select-window -t "$WIN_NAME" 
+   fi
+else
+
+tmux rename-window "$WIN_NAME"
+
+title="Select Server to connect to"
+
 
 source "$ATOMIQUE_ROOT_DIR/inc/inc_decoration.sh"
 source "$ATOMIQUE_ROOT_DIR/inc/inc_select_server.sh"
@@ -87,5 +104,7 @@ fi
 	tmux kill-pane -t 1
 
 	"$ATOMIQUE_ROOT_DIR/cmd/ssh_connect.sh"
+fi
+
 
 fi

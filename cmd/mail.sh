@@ -7,5 +7,19 @@ then
         export ATOMIQUE_ROOT_DIR="$(dirname "$(readlink -f "$0")")/../"
 fi
 
-tmux rename-window "atomique-mail"
-aerc
+
+WIN_NAME="atomique-mail"
+
+#AVOID SHOWING error for fast returning command
+ALLOW_MENU_BACK_NOW=1
+
+# ALWAYS REUSE SAME TMUX WINDOW
+if ! tmux list-windows -F "#{window_name}" | grep -q "$WIN_NAME"; then
+        tmux rename-window "$WIN_NAME"
+        aerc
+else
+        
+	tmux select-window -t "$WIN_NAME"
+
+fi
+

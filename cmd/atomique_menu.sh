@@ -7,9 +7,23 @@ then
         export ATOMIQUE_ROOT_DIR="$(dirname "$(readlink -f "$0")")/../"
 fi
 
-source "$ATOMIQUE_ROOT_DIR/inc/inc_decoration.sh"
+WIN_NAME="atomique-menu"
 
-tmux rename-window "atomique-menu"
+ACTIVE_WINDOW=$(tmux display-message -p '#W')
+
+#AVOID SHOWING error for fast returning command
+ALLOW_MENU_BACK_NOW=1
+
+#Switch to existing window with atomique menu
+if [ "$ACTIVE_WINDOW" != "$WIN_NAME" ]; then
+   if tmux list-windows -F "#{window_name}" | grep -q "$WIN_NAME"; then
+        tmux select-window -t "$WIN_NAME" 
+   fi
+else
+
+tmux rename-window "$WIN_NAME"
+
+source "$ATOMIQUE_ROOT_DIR/inc/inc_decoration.sh"
 
 ## Check if fzf command is in the PATH
 if command -v fzf &> /dev/null; then
@@ -30,6 +44,8 @@ fi
 clear
 
 
+#Enable again check for short command error
+ALLOW_MENU_BACK_NOW=777
 
 # Check if the status pane exists
 tmux list-panes -F '#{pane_current_command}' | grep -q "check_changes.sh"
@@ -97,7 +113,12 @@ elif [ "$menu_command" = "" ]; then
 else
 
 start=$(date +%s.%N)
-   
+  
+  #most comand will rename the window but in any case 
+  #we need to change the window name otherwise calling the menu again 
+  #would show this running command 
+  tmux rename-window "atomique-generic-command"
+
   if [[ $menu_command == *.sh ]]; then
      "$ATOMIQUE_ROOT_DIR/cmd/$menu_command"
   else                                                                 
@@ -110,6 +131,8 @@ duration=$(echo "$end - $start" | bc)
 # Check if the duration is less than 2 seconds and print "hey" if so
 minsec=2
 
+
+  if (( $ALLOW_MENU_BACK_NOW==777)); then
   if (( $(echo "$duration < $minsec" | bc -l) )); then
         echo $SEPLINE
 	echo " Ended $menu_title - command: [ $menu_command ]"
@@ -120,9 +143,12 @@ minsec=2
         echo $SEPLINE
 	read -n 1 -s
   fi
+  fi
 fi
 
 tmux rename-window "atomique-menu"
 
 "$ATOMIQUE_ROOT_DIR/cmd/atomique_menu.sh"
 
+
+fi
