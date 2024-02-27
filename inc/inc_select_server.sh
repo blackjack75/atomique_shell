@@ -52,7 +52,7 @@ source "$ATOMIQUE_ROOT_DIR/inc/inc_parse_line_ssh.sh"
 # Print chosen server's name
 clear
 
-echo "-------------------------------------"
+echo $SEPLINE
 echo "Picked : $server_name ( $server_user @ $server_host : $server_port ) "
-echo "-------------------------------------"
-
+echo $SEPLINE
+echo 
