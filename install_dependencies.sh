@@ -39,8 +39,6 @@ $pipcmd install toolong
 $pipcmd install git+https://github.com/darrenburns/elia
 $pipcmd install frogmouth
 $pipcmd install shell-gpt 
-$pipcmd install timg
-
 
 
 #echo
@@ -48,5 +46,7 @@ $pipcmd install timg
 #echo "mdcat requires building with cargo doesn't work on Haiku yet"
 #echo "press enter to try"
 #read UserInput
+
+cargo install gping 
 
 #cargo install mdcat
