@@ -39,6 +39,8 @@ $pipcmd install toolong
 $pipcmd install git+https://github.com/darrenburns/elia
 $pipcmd install frogmouth
 $pipcmd install shell-gpt 
+$pipcmd install timg
+
 
 
 #echo
