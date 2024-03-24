@@ -8,9 +8,12 @@ ATOMIQUE_ROOT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null &
 cd $ATOMIQUE_ROOT_DIR
 git pull
 
-cd ../atomique_haiku
-git pull
+if [ -d "../atomique_haiku" ]; then
+    cd ../atomique_haiku
+    git pull
+fi
 
-cd ../atomique_rust
-git pull
-
+if [ -d "../atomique_rust" ]; then
+    cd ../atomique_rust
+    git pull
+fi
