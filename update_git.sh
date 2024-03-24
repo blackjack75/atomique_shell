@@ -7,3 +7,10 @@ ATOMIQUE_ROOT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null &
 
 cd $ATOMIQUE_ROOT_DIR
 git pull
+
+cd ../atomique_haiku
+git pull
+
+cd ../atomique_rust
+git pull
+
