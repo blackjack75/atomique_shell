@@ -6,11 +6,11 @@ platform='unknown'
 unamestr=$(uname)
 if [ "$unamestr" = 'Linux' ]; then
 	   platform='linux'
-sudo apt install most pandoc tidy fzf ripgrep bat gping fortune amfora
+sudo apt install pipx most pandoc tidy fzf ripgrep bat gping fortune amfora
 
 elif [ "$unamestr" = 'FreeBSD' ]; then
            platform='freebsd'
-sudo pkg install most pandoc tidy fzf ripgrep bat pipx gping fortune amfora
+sudo pkg install pipx most pandoc tidy fzf ripgrep bat pipx gping fortune amfora
 
    elif [ "$unamestr" = 'Haiku' ]; then
 	      platform='haiku'
