@@ -17,12 +17,22 @@ ACTIVE_WINDOW=$(tmux display-message -p '#W')
 #AVOID SHOWING error for fast returning command
 ALLOW_MENU_BACK_NOW=1
 
+RUNHERE=1
+
 #Switch to existing window with atomique menu
 if [ "$ACTIVE_WINDOW" != "$WIN_NAME" ]; then
    if tmux list-windows -F "#{window_name}" | grep -q "$WIN_NAME"; then
-        tmux select-window -t "$WIN_NAME" 
+        echo "Will selecf windo $WIN_NAME"
+        tmux select-window -t "$WIN_NAME"
+	RUNHERE=0
+   else
+   	echo "not found $WIN_NAME"
+
    fi
-else
+fi
+
+if [ "$RUNHERE" = 1 ]; then
+
 
 tmux rename-window "$WIN_NAME"
 

@@ -24,10 +24,15 @@ echo "------------------------------------"
 #THIS MUST RUN AS normal user (usually 'pi' but it can be root on DietPI)
 sudo cp -f "$ATOMIQUE_ROOT_DIR/atomique_shell_cron_update_entry" $DEST_CRON_UPD
 
+SEDOPTION=
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  SEDOPTION="-i ''"
+fi
+
 #Replace the path of script and the user
 #We use : and not / as separator so we don't have to escape slashes in path
-sudo sed -i '' -e "s:REPLACEMEPATH:$ATOMIQUE_ROOT_DIR:g" "$DEST_CRON_UPD"
-sudo sed -i '' -e "s:REPLACEMEUSER:$LOCALUSER:g" "$DEST_CRON_UPD"
+sudo sed $SEDOPTION -e "s:REPLACEMEPATH:$ATOMIQUE_ROOT_DIR:g" "$DEST_CRON_UPD"
+sudo sed $SEDOPTION -e "s:REPLACEMEUSER:$LOCALUSER:g" "$DEST_CRON_UPD"
 
 #-----------------------
 
