@@ -24,7 +24,8 @@ echo "------------------------------------"
 #THIS MUST RUN AS normal user (usually 'pi' but it can be root on DietPI)
 sudo cp -f "$ATOMIQUE_ROOT_DIR/atomique_shell_cron_update_entry" $DEST_CRON_UPD
 
-SEDOPTION=
+SEDOPTION="-i"
+
 if [[ "$OSTYPE" == "darwin"* ]]; then
   SEDOPTION="-i ''"
 fi

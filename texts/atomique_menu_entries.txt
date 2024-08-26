@@ -11,6 +11,7 @@ Note Write       | note_write.sh   | Create New Note
 Note Search      | note_search.sh  | Notes Find and Edit 
 Ping Server      | ping_server.sh  | Ping a server  
 Mail (aerc)      | mail.sh         | email
+News (slrn)      | news.sh         | NewsGroups
 Game Tint        | tint.sh         | Game Not Tetris
 Game Pong        | pong.sh         | Game Pong
 Get Tootmarks    | tootmarks_up.sh | Get URLs Mastodon Bookmarks

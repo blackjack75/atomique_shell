@@ -64,6 +64,11 @@ if [[ $(echo "$server_keywords" | grep -i "macintosh" | grep -i "intel") ]]; the
     tmuxpath=/usr/local/bin/tmux
 fi
 
+# Same as above for powerPC macs
+if [[ $(echo "$server_keywords" | grep -i "macintosh" | grep -i "powerpc") ]]; then
+    tmuxpath=/usr/local/bin/tmux
+fi
+
 cmd="tmux new-session -A -s \"$remoteName\""
 cmdMac="source ~/.zshrc;$tmuxpath new-session -A -s \"$remoteName\""
 cmdWin=
