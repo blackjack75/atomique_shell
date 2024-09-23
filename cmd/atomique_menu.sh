@@ -11,7 +11,7 @@ function cleanExit() {
     tmux rename-window "atomique-exited"
     clear
     rm /tmp/atomique_time_test
-    echo "It was good knowing you."
+    # echo "It was good knowing you."
     exit 0
 }
 
@@ -44,7 +44,7 @@ if [ "$ACTIVE_WINDOW" != "$WIN_NAME" ]; then
 fi
 
 if [ "$GO_ON" == "1" ]; then
-echo GO ON!
+
 tmux rename-window "$WIN_NAME"
 
 source "$ATOMIQUE_ROOT_DIR/inc/inc_decoration.sh"
@@ -128,22 +128,20 @@ date +%s > /tmp/atomique_time_test
 clear
 if [ "$menu_command" = "kill" ]; then
 
-    echo "Exiting cleanly"
-    cleanExit
+     cleanExit
    
 elif [ "$menu_command" = "" ]; then
 
-	echo "No command. You picked an empty line I guess :-)"
   cleanExit 
 else
 
-start=$(date +%s.%N)
+  start=$(date +%s.%N)
   
-  #most comand will rename the window but in any case 
+  #most commands will rename the window but in any case 
   #we need to change the window name otherwise calling the menu again 
   #would show this running command 
   tmux rename-window "atomique-generic-command"
-
+   echo MMENU COMMAND $menu_command
   if [[ $menu_command == *.sh ]]; then
      "$ATOMIQUE_ROOT_DIR/cmd/$menu_command"
   else                                                                 
@@ -171,7 +169,7 @@ minsec=2
   fi
 fi
 
-tmux rename-window "atomique-ready-to-reload"
+tmux rename-window "atomique-menu"
 
 "$ATOMIQUE_ROOT_DIR/cmd/atomique_menu.sh"
 
