@@ -7,20 +7,44 @@ then
         export ATOMIQUE_ROOT_DIR="$(dirname "$(readlink -f "$0")")/../"
 fi
 
+function cleanExit() {
+    tmux rename-window "atomique-exited"
+    clear
+    rm /tmp/atomique_time_test
+    echo "It was good knowing you."
+    exit 0
+}
+
+handle_ctrl_c() {
+    echo "Caught Ctrl-C, running cleanup code..."
+    cleanExit
+}
+
+# Trap the SIGINT signal (which is sent when you press Ctrl-C)
+trap handle_ctrl_c SIGINT
+
+
+
+
+
 WIN_NAME="atomique-menu"
 
 ACTIVE_WINDOW=$(tmux display-message -p '#W')
 
 #AVOID SHOWING error for fast returning command
 ALLOW_MENU_BACK_NOW=1
-
+GO_ON=0
 #Switch to existing window with atomique menu
 if [ "$ACTIVE_WINDOW" != "$WIN_NAME" ]; then
    if tmux list-windows -F "#{window_name}" | grep -q "$WIN_NAME"; then
         tmux select-window -t "$WIN_NAME" 
+   else
+   GO_ON=1
    fi
-else
+fi
 
+if [ "$GO_ON" == "1" ]; then
+echo GO ON!
 tmux rename-window "$WIN_NAME"
 
 source "$ATOMIQUE_ROOT_DIR/inc/inc_decoration.sh"
@@ -92,6 +116,8 @@ selected_menu=$(
 )
 fi
 
+tmux rename-window "atomique-ready-to-execute"
+
 #kill status pane
 tmux kill-pane -t 1
 
@@ -101,15 +127,14 @@ date +%s > /tmp/atomique_time_test
 
 clear
 if [ "$menu_command" = "kill" ]; then
-    tmux rename-window "atomique-exited"
-    clear
-    rm /tmp/atomique_time_test
-    echo "It was good knowing you."
-    exit 1
+
+    echo "Exiting cleanly"
+    cleanExit
+   
 elif [ "$menu_command" = "" ]; then
 
 	echo "No command. You picked an empty line I guess :-)"
-
+  cleanExit 
 else
 
 start=$(date +%s.%N)
@@ -146,7 +171,7 @@ minsec=2
   fi
 fi
 
-tmux rename-window "atomique-menu"
+tmux rename-window "atomique-ready-to-reload"
 
 "$ATOMIQUE_ROOT_DIR/cmd/atomique_menu.sh"
 
