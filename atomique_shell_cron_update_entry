@@ -1,6 +1,6 @@
 # Refresh git if needed and notify
 #End result should be like
-#* * * * * root su pi /home/pi/raspistuff/check_updates.sh > /var/log/raspistuff_check_updates.log 2>&1
+#* * * * * root su pi /home/YOURUSER/raspistuff/check_updates.sh > /var/log/raspistuff_check_updates.log 2>&1
 
 #This will be changed by raspistuff/install.sh script
 5 * * * * REPLACEMEUSER REPLACEMEPATH/update_git.sh > /dev/null 2>&1

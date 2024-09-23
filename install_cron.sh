@@ -2,6 +2,10 @@
 
 ATOMIQUE_ROOT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
+
+
+echo "Starting install from $ATOMIQUE_ROOT_DIR"
+
 platform='unknown'
 unamestr=$(uname)
 if [ "$unamestr" = 'Linux' ]; then
@@ -37,4 +41,10 @@ sudo sed $SEDOPTION -e "s:REPLACEMEUSER:$LOCALUSER:g" "$DEST_CRON_UPD"
 
 #-----------------------
 
+echo 
+echo ---------------
+echo contents of $DEST_CRON_UPD :
+echo ---------------
+
+cat $DEST_CRON_UPD
 
