@@ -20,11 +20,11 @@ else
 
 	
 tmux rename-window "atomique-gpt"
-echo "Type 's' for shell-gpt or any other key for Elia:"
-read -r choice
+#echo "Type 's' for shell-gpt or any other key for Elia:"
+#read -r choice
 
-if [ "$choice" = "s" ]; then
-    echo "You chose sgpt"
+#if [ "$choice" = "s" ]; then
+#    echo "You chose sgpt"
 
 clear
 echo $SEPLINE
@@ -55,9 +55,9 @@ echo "Shell-GPT Conversation:: $filename"
 echo $SEPLINE
 sgpt --repl --chat "$filename"
 
-else
-    echo "You chose Elia"
-elia
-fi
+#else
+#    echo "You chose Elia"
+#elia
+#fi
 fi
 

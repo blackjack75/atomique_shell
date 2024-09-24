@@ -36,7 +36,7 @@ $pipcmd install toot
 $pipcmd install beautifulsoup4
 
 $pipcmd install toolong
-$pipcmd install git+https://github.com/darrenburns/elia
+#$pipcmd install git+https://github.com/darrenburns/elia
 $pipcmd install frogmouth
 $pipcmd install shell-gpt 
 
