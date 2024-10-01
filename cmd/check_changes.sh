@@ -14,8 +14,7 @@ DIR=~/atomique/data
 
 #Show a fortune for 5 sec before launching before checking git
 clear
-
-timestamp=$(cat /tmp/atomique_time_test)
+timestamp=$(cat /tmp/atomique_time_test 2>/dev/null || echo 0)
 current_time=$(date +%s)
 difference=$((current_time - timestamp))
 
