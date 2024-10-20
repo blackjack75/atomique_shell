@@ -71,5 +71,7 @@ Assumes you the committer has a proper deploy config  ~/.ssh/config:
 
     git clone git@github.com-atomique-shell:blackjack75/atomique_shell.git ~/atomique/code/atomique_shell
  
-    git clone git@github.com-servers:blackjack75/servers_santiago.git ~/atomique/data
+    git clone "ssh://git@gitea.lema.org:30022/Santiago/atomique_servers_santiago.git" ~/atomique/data
+
+
 
