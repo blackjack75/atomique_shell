@@ -23,3 +23,4 @@ SSH Get Host     | ssh_get_ip.sh   | Copy server host/IP to clipboard
 SSH Edit Servers | ssh_edit.sh     | Edit servers files
 SSH Copy ID      | ssh_copy_id.sh  | Copy public key to SSH server
 SSH Connect      | ssh_connect.sh  | Connect to SSH servers
+SSH Forget Host  | ssh_forget.sh   | Remove server from known hosts

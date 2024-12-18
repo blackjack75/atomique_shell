@@ -85,18 +85,22 @@ if [ "$server_host_and_user" = "" ]; then
 	tmux kill-pane -t 1
 else
 
+opt=" -p $server_port -t $server_host_and_user "
+
+echo "Connecting with options: $opt"
+
 if [[ $(echo "$server_keywords" | grep -i "macintosh") ]]; 
   then 
 	  echo "Connecting to a Mac..."; 
-	  ssh -p $server_port -t $server_host_and_user $cmdMac;
+	  ssh $opt $cmdMac;
 
 elif [[ $(echo "$server_keywords" | grep -i "windows") ]]; 
   then 
 	  echo "Connecting to Windows OpenSSH"; 
-          ssh -p $server_port -t $server_host_and_user $cmdWin;
+          ssh $opt $cmdWin;
   else
 	  echo "Connecting to Server..."; 
-          ssh -p $server_port -t $server_host_and_user $cmd;
+          ssh $opt $cmd;
 fi
 
 
