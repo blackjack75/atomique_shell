@@ -8,8 +8,9 @@ Windows Sleeper  | win_sleep.sh    | Sleep a Windows Server
 AI GPT           | gpt.sh          | Chat with dumb AI (elia/sgpt)
 Bookmarks        | bookmarks.sh    | Pick bookmarks
 Joplin Notes     | joplin.sh       | Joplin notes
-Note Write       | note_write.sh   | Create New Note 
-Note Search      | note_search.sh  | Notes Find and Edit 
+Glue Notes       | glues           | Glues Notes
+OLD Nxte Write       | note_write.sh   | Create New Note 
+OLD Nxte Search      | note_search.sh  | Notes Find and Edit 
 Ping Server      | ping_server.sh  | Ping a server  
 Mail (aerc)      | mail.sh         | email
 News (slrn)      | news.sh         | NewsGroups
