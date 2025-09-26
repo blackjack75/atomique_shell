@@ -48,5 +48,6 @@ $pipcmd install shell-gpt
 #read UserInput
 
 cargo install gping 
+cargo install glues
 
 #cargo install mdcat
