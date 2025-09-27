@@ -49,5 +49,5 @@ $pipcmd install shell-gpt
 
 cargo install gping 
 cargo install glues
-
+cargo install tenere
 #cargo install mdcat

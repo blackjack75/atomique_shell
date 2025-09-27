@@ -5,7 +5,7 @@ About            | atomique_abt.sh | Info about this
 Update self      | update_code.sh  | Git pull atomique commands
 Sync data        | update_data.sh  | Git push & pull data 
 Windows Sleeper  | win_sleep.sh    | Sleep a Windows Server 
-AI GPT           | gpt.sh          | Chat with dumb AI (elia/sgpt)
+AI GPT           | gpt.sh          | Chat with dumb AI
 Bookmarks        | bookmarks.sh    | Pick bookmarks
 Joplin Notes     | joplin.sh       | Joplin notes
 Glue Notes       | glues_notes.sh  | Glues Notes
