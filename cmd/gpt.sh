@@ -16,7 +16,7 @@ if tmux list-windows | grep -q "atomique-gpt"; then
     tmux select-window -t "atomique-gpt"
     exit 0
 
-else
+elsefif 
 
 	
 tmux rename-window "atomique-gpt"
@@ -27,4 +27,4 @@ tmux rename-window "atomique-gpt"
 #    echo "You chose sgpt"
 
 tenere
-
+fi
