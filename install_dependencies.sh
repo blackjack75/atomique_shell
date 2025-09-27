@@ -10,7 +10,7 @@ sudo apt install timg xclip html2ps pipx most pandoc tidy fzf ripgrep bat gping 
 
 elif [ "$unamestr" = 'FreeBSD' ]; then
            platform='freebsd'
-sudo pkg install pipx most xclip timg html2p pandoc tidy fzf ripgrep bat pipx gping fortune amfora
+sudo pkg install pipx most xclip timg html2p pandoc tidy fzf ripgrep bat pipx gping fortune-mod-freebsd-classic amfora
 
    elif [ "$unamestr" = 'Haiku' ]; then
 	      platform='haiku'
