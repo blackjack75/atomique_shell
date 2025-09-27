@@ -6,11 +6,11 @@ platform='unknown'
 unamestr=$(uname)
 if [ "$unamestr" = 'Linux' ]; then
 	   platform='linux'
-sudo apt install timg html2ps pipx most pandoc tidy fzf ripgrep bat gping fortune amfora
+sudo apt install timg xclip html2ps pipx most pandoc tidy fzf ripgrep bat gping fortune amfora
 
 elif [ "$unamestr" = 'FreeBSD' ]; then
            platform='freebsd'
-sudo pkg install pipx most timg html2p pandoc tidy fzf ripgrep bat pipx gping fortune amfora
+sudo pkg install pipx most xclip timg html2p pandoc tidy fzf ripgrep bat pipx gping fortune amfora
 
    elif [ "$unamestr" = 'Haiku' ]; then
 	      platform='haiku'
