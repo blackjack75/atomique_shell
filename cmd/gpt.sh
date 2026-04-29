@@ -25,6 +25,11 @@ tmux rename-window "atomique-gpt"
 
 #if [ "$choice" = "s" ]; then
 #    echo "You chose sgpt"
+#    
 
-tenere
+#$tenere
+
+/home/jacques/raspistuff/bin_shell/chatgpt.sh
+
+
 fi

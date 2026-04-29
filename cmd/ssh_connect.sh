@@ -59,6 +59,12 @@ tmux split-window -l 2 -v -c '#{pane_current_path}' "$ATOMIQUE_ROOT_DIR/inc/inc_
 
 
 tmuxpath=tmux
+
+#default to Apple Sillicon Mac
+if [[ $(echo "$server_keywords" | grep -i "macintosh" ) ]]; then
+    tmuxpath=/opt/homebrew/bin/tmux
+fi
+
 #Intel Mac, force different path for tmux, otherwise it is not found
 if [[ $(echo "$server_keywords" | grep -i "macintosh" | grep -i "intel") ]]; then
     tmuxpath=/usr/local/bin/tmux
