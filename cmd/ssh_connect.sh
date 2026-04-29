@@ -60,7 +60,7 @@ tmux split-window -l 2 -v -c '#{pane_current_path}' "$ATOMIQUE_ROOT_DIR/inc/inc_
 
 tmuxpath=tmux
 
-#default to Apple Sillicon Mac
+#default to Apple Sillicon Macc
 if [[ $(echo "$server_keywords" | grep -i "macintosh" ) ]]; then
     tmuxpath=/opt/homebrew/bin/tmux
 fi
