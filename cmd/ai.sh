@@ -7,7 +7,7 @@ then
         export ATOMIQUE_ROOT_DIR="$(dirname "$(readlink -f "$0")")/../"
 fi
 
-THISWIN=atomique-ia
+THISWIN=atomique-ia-$1
 
 if tmux list-windows | grep -q "$THISWIN"; then
     
@@ -22,6 +22,11 @@ else
 	
 tmux rename-window "$THISWIN"
 
-OLLAMA_HOST=http://194.168.0.120:11434
+export OLLAMA_HOST="http://10.22.22.40:11434"
+if [ $1 == "m4" ]; then
+   export OLLAMA_HOST="http://192.168.0.120:11434"
+fi
+echo launching on $OLLAMA_HOST
 lazyollama
+
 fi

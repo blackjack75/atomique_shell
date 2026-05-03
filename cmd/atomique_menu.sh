@@ -141,15 +141,22 @@ else
   #we need to change the window name otherwise calling the menu again 
   #would show this running command 
   tmux rename-window "atomique-generic-command"
-   echo MMENU COMMAND $menu_command
+   echo MMENU COMMAND -- $menu_command --
   
   #if [[ $menu_command == *.sh ]]; then
   # if .sh is anywhere in command - allows params
-  if [[ $menu_command == *".sh" ]]; then
 
-     "$ATOMIQUE_ROOT_DIR/cmd/$menu_command"
+  read -r -a cmd_array <<< "$menu_command"
+
+  
+  command_path="$ATOMIQUE_ROOT_DIR/cmd/${cmd_array[0]}"
+
+  echo CmdPath is $command_path
+  if [[ "${cmd_array[0]}" == *.sh ]]; then
+
+	$command_path ${cmd_array[@]:1}
   else                                                                 
-     "$menu_command"
+     ${cmd_array[@]}
   fi     
 
 end=$(date +%s.%N)
