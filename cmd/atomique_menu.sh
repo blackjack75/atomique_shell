@@ -142,7 +142,11 @@ else
   #would show this running command 
   tmux rename-window "atomique-generic-command"
    echo MMENU COMMAND $menu_command
-  if [[ $menu_command == *.sh ]]; then
+  
+  #if [[ $menu_command == *.sh ]]; then
+  # if .sh is anywhere in command - allows params
+  if [[ $menu_command == *".sh" ]]; then
+
      "$ATOMIQUE_ROOT_DIR/cmd/$menu_command"
   else                                                                 
      "$menu_command"
