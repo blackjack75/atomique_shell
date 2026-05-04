@@ -6,8 +6,11 @@ Update self      | update_code.sh  | Git pull atomique commands
 Sync data        | update_data.sh  | Git push & pull data 
 Windows Sleeper  | win_sleep.sh    | Sleep a Windows Server 
 AI GPT           | gpt.sh          | Chat with dumb AI
-AI M4            | ai.sh m4        | LazyOllama on M4
-AI M1            | ai.sh m1        | LazyOllama on M1
+AI PxC           | ai.sh PxC      | LazyOllama on Case 3060
+AI PxL           | ai.sh PxL      | LazyOllama on Large 3060
+AI PxG           | ai.sh PxG       | LazyOllama on MiniGPU 3050
+AI M4            | ai.sh M4       | LazyOllama on M4 Mini
+AI M1            | ai.sh M1        | LazyOllama on M1 Studio
 Bookmarks        | bookmarks.sh    | Pick bookmarks
 Joplin Notes     | joplin.sh       | Joplin notes
 Glue Notes       | glues_notes.sh  | Glues Notes

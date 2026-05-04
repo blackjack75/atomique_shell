@@ -22,11 +22,38 @@ else
 	
 tmux rename-window "$THISWIN"
 
-export OLLAMA_HOST="http://10.22.22.40:11434"
-if [ $1 == "m4" ]; then
-   export OLLAMA_HOST="http://192.168.0.120:11434"
-fi
-echo launching on $OLLAMA_HOST
+
+
+
+
+
+ollama_host_file=~/atomique/data/ollama_hosts.txt
+echo loading ollama hosts from $ollama_host_file
+declare -A hosts
+
+
+while IFS='|' read -r identifier url; do
+    # Trim leading and trailing spaces from both identifier and url
+    identifier=$(echo "$identifier" | xargs)
+    url=$(echo "$url" | xargs)
+
+    echo ..$identifier..$url..
+
+    hosts["$identifier"]="$url"
+done < "$ollama_host_file"
+
+
+
+#for id in "${!hosts[@]}"; do
+#    echo "$id -> ${hosts[$id]}"
+#done
+
+#export OLLAMA_HOST="http://10.22.22.40:11434"
+
+export OLLAMA_HOST=${hosts[$1]}
+
+echo launching ..ID..$1.. on ..$OLLAMA_HOST..
+
 lazyollama
 
 fi
