@@ -54,8 +54,8 @@ remoteName="fromSSH-$nbwin"
 # Connect to the chosen server using its IP address (second field)
 
 #Create STATUS pane
-#statusInfo="$server_name $server_host_and_user : $server_port"
-#tmux split-window -l 2 -v -c '#{pane_current_path}' "$ATOMIQUE_ROOT_DIR/inc/inc_status_ssh.sh \"$statusInfo\" " \; select-pane -t:.0
+statusInfo="$server_name $server_host_and_user : $server_port"
+tmux split-window -l 2 -v -c '#{pane_current_path}' "$ATOMIQUE_ROOT_DIR/inc/inc_status_ssh.sh \"$statusInfo\" " \; select-pane -t:.0
 
 
 tmuxpath=tmux
